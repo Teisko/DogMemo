@@ -29,19 +29,18 @@ public class MainActivity extends AppCompatActivity {
         numberOfTouches = (TextView) findViewById(R.id.numberOfTouches);
         numberOfTouches.setVisibility(View.INVISIBLE);
 
-        /*TextView ballShape = (TextView) findViewById(R.id.ballShape);
+        TextView ballShape = (TextView) findViewById(R.id.ballShape);
         ballShape.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    ballShapeOnClick();
-                    //Log.d("Pressed", "Button pressed");
+                    ballShapeOnClick(findViewById(R.id.ballShape));
                 }
-                /*else if (event.getAction() == MotionEvent.ACTION_UP)
-                    Log.d("Released", "Button released");
+                /*else if (event.getAction() == MotionEvent.ACTION_UP) {
+                }*/
                 return false;
             }
-        });*/
+        });
     }
 
     public void ballShapeOnClick(View view) {
