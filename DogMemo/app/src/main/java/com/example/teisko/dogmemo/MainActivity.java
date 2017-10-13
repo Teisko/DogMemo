@@ -2,14 +2,10 @@ package com.example.teisko.dogmemo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.view.View.OnTouchListener;
-import static com.example.teisko.dogmemo.R.id.ballShape;
 
 // tutki https://stackoverflow.com/questions/5123407/losing-data-when-rotate-screen
 
