@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action.xml",
+        "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\layout-v21\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\layout-v21\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\layout-v21\\notification_template_custom_big.xml"
+    }
+]

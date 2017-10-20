@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
+    }
+]
