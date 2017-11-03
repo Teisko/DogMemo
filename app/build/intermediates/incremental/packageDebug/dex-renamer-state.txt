@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 #Fri Oct 20 16:46:11 EEST 2017
+=======
+#Wed Nov 01 20:25:21 EET 2017
+>>>>>>> Stashed changes
 base.0=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_e28cd9c49e12a931b4b3c12dfa1e6865aa7c3a2f
 renamed.1=classes2.dex
 renamed.0=classes.dex

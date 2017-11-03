@@ -6,22 +6,37 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
+<<<<<<< Updated upstream
     timestamp="1508507920487"
+=======
+    timestamp="1509697473375"
+>>>>>>> Stashed changes
     token="-5210015062866070283"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
+<<<<<<< Updated upstream
         duration="282" />
+=======
+        duration="334" />
+>>>>>>> Stashed changes
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
+<<<<<<< Updated upstream
         duration="32" />
     <task
         name="verifier"
         duration="16" />
+=======
+        duration="26" />
+    <task
+        name="verifier"
+        duration="6" />
+>>>>>>> Stashed changes
 
     <artifact
         location="C:\androidProjects\DogMemo\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
@@ -32,7 +47,11 @@
 
     <build
         build-mode="FULL"
+<<<<<<< Updated upstream
         timestamp="1508506195029"
+=======
+        timestamp="1509696942058"
+>>>>>>> Stashed changes
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="C:\androidProjects\DogMemo\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
@@ -73,7 +92,11 @@
     </build>
     <build
         build-mode="COLD"
+<<<<<<< Updated upstream
         timestamp="1508507169266"
+=======
+        timestamp="1509697459563"
+>>>>>>> Stashed changes
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\androidProjects\DogMemo\app\build\outputs\apk\app-debug.apk"
@@ -81,7 +104,11 @@
     </build>
     <build
         build-mode="COLD"
+<<<<<<< Updated upstream
         timestamp="1508507920487"
+=======
+        timestamp="1509697473375"
+>>>>>>> Stashed changes
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="C:\androidProjects\DogMemo\app\build\intermediates\split-apk\debug\slices\slice_2.apk"

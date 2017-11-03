@@ -3,7 +3,11 @@
     package="com.example.teisko.dogmemo.test" >
 
     <uses-sdk
+<<<<<<< Updated upstream
         android:minSdkVersion="15"
+=======
+        android:minSdkVersion="16"
+>>>>>>> Stashed changes
         android:targetSdkVersion="26" />
 
     <instrumentation

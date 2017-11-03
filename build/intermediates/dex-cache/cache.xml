@@ -7,7 +7,11 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
+<<<<<<< Updated upstream
         sha1="6eaa41abeed55c42a7ba43a8b88225a2c19a0802">
+=======
+        sha1="7d77a87899a7dbbe3146ec9da6af5eaff6a97711">
+>>>>>>> Stashed changes
         <dex dex="C:\androidProjects\DogMemo\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_e9fd141a141d1241de0a403ce2a2c324e881f111\classes.dex" />
     </item>
     <item

@@ -3,12 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <solid
+<<<<<<< Updated upstream
         android:color="#ffff0000"/>
+=======
+        android:color="#ff0000"/>
+>>>>>>> Stashed changes
     <padding
         android:left="7dp"
         android:top="7dp"
         android:right="7dp"
+<<<<<<< Updated upstream
         android:bottom="7dp" />
+=======
+        android:bottom="7dp"/>
+>>>>>>> Stashed changes
     <size
         android:width="120dp"
         android:height="120dp"/>

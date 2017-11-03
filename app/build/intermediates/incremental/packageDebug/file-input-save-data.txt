@@ -1,26 +1,45 @@
 #Internal package file, do not edit.
+<<<<<<< Updated upstream
 #Fri Oct 20 16:46:11 EEST 2017
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\select_dialog_item_material.xml
+=======
+#Wed Nov 01 20:25:21 EET 2017
+210.set=ANDROID_RESOURCE
+14.set=ANDROID_RESOURCE
+180.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_media.xml
+>>>>>>> Stashed changes
 118.set=ANDROID_RESOURCE
 60.set=ANDROID_RESOURCE
 2.set=ANDROID_RESOURCE
 164.set=ANDROID_RESOURCE
 26.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png
 209.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 78.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png
+=======
+78.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml
+>>>>>>> Stashed changes
 21.set=ANDROID_RESOURCE
 53.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_left_mtrl_light.png
 107.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 159.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 125.set=ANDROID_RESOURCE
 211.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 80.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_alert_dialog_button_bar_material.xml
 134.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 186.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 161.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 192.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_edittext.xml
+=======
+80.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png
+134.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+186.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+161.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+192.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_media_cancel_action.xml
+>>>>>>> Stashed changes
 132.set=ANDROID_RESOURCE
 179.set=ANDROID_RESOURCE
 59.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -29,6 +48,7 @@
 86.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 65.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_alert_dialog_material.xml
 61.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 217.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_part_chronometer.xml
 40.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png
 186.set=ANDROID_RESOURCE
@@ -39,6 +59,18 @@
 198.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 121.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 142.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png
+=======
+217.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_dialog_title_material.xml
+40.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png
+186.set=ANDROID_RESOURCE
+115.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\notification_action_background.xml
+49.set=ANDROID_RESOURCE
+92.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_left_mtrl_dark.png
+167.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_seekbar_tick_mark_material.xml
+198.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+121.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+142.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_dark.9.png
+>>>>>>> Stashed changes
 173.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 95.set=ANDROID_RESOURCE
 100.set=ANDROID_RESOURCE
@@ -50,6 +82,7 @@
 15.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_item_background_holo_light.xml
 46.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 213.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 98.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_e9fd141a141d1241de0a403ce2a2c324e881f111
 21.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 17.set=ANDROID_RESOURCE
@@ -73,26 +106,64 @@
 70.set=ANDROID_RESOURCE
 27.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png
 79.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml
+=======
+98.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+21.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+17.set=ANDROID_RESOURCE
+73.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+229.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png
+225.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+204.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png
+127.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\ball_shape.xml
+63.set=ANDROID_RESOURCE
+6.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+5.set=ANDROID_RESOURCE
+179.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_action_tombstone.xml
+102.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_bar_up_container.xml
+231.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png
+154.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ratingbar_indicator_material.xml
+167.set=ANDROID_RESOURCE
+220.set=ANDROID_RESOURCE
+24.set=ANDROID_RESOURCE
+181.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_btn_radio_material.xml
+128.set=ANDROID_RESOURCE
+70.set=ANDROID_RESOURCE
+27.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png
+79.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_alert_dialog_button_bar_material.xml
+>>>>>>> Stashed changes
 31.set=ANDROID_RESOURCE
 54.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_36dp.png
 108.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 135.set=ANDROID_RESOURCE
 212.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 81.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png
+=======
+81.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_lines_media.xml
+>>>>>>> Stashed changes
 135.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 187.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 110.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 162.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 193.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_slide_out_top.xml
+=======
+193.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_focused_holo.9.png
+>>>>>>> Stashed changes
 142.set=ANDROID_RESOURCE
 189.set=ANDROID_RESOURCE
 35.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 103.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 98.set=DEX
+=======
+98.set=ANDROID_RESOURCE
+>>>>>>> Stashed changes
 209.set=ANDROID_RESOURCE
 87.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 10.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 66.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\support_simple_spinner_dropdown_item.xml
+<<<<<<< Updated upstream
 218.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_action.xml
 41.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_edit_text_material.xml
 196.set=ANDROID_RESOURCE
@@ -105,6 +176,20 @@
 122.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 220.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_template_big_media_narrow.xml
 143.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png
+=======
+218.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_e28cd9c49e12a931b4b3c12dfa1e6865aa7c3a2f\\classes.dex
+41.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_edit_text_material.xml
+196.set=ANDROID_RESOURCE
+116.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png
+93.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_btn_colored_borderless_text_material.xml
+147.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+59.set=ANDROID_RESOURCE
+168.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_tint_btn_checkable.xml
+199.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+122.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+220.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_part_chronometer.xml
+143.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png
+>>>>>>> Stashed changes
 174.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 110.set=ANDROID_RESOURCE
 216.set=ANDROID_RESOURCE
@@ -114,11 +199,16 @@
 16.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_primary_text_disable_only_material_light.xml
 47.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 223.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 99.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+=======
+99.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_e9fd141a141d1241de0a403ce2a2c324e881f111
+>>>>>>> Stashed changes
 22.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 27.set=ANDROID_RESOURCE
 74.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 226.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 205.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_icon_group.xml
 128.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_tint_switch_thumb.xml
 73.set=ANDROID_RESOURCE
@@ -130,6 +220,20 @@
 171.set=ANDROID_RESOURCE
 34.set=ANDROID_RESOURCE
 182.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_seek_thumb.xml
+=======
+205.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_tile_bg.xml
+128.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_tint_seek_thumb.xml
+73.set=ANDROID_RESOURCE
+7.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+103.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_menu_selectall_mtrl_alpha.png
+232.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_mode_close_item_material.xml
+155.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_search_view.xml
+230.set=ANDROID_RESOURCE
+130.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v22\\abc_alert_dialog_button_bar_material.xml
+171.set=ANDROID_RESOURCE
+34.set=ANDROID_RESOURCE
+182.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_lines_media.xml
+>>>>>>> Stashed changes
 138.set=ANDROID_RESOURCE
 80.set=ANDROID_RESOURCE
 28.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\notification_template_custom_big.xml
@@ -139,13 +243,21 @@
 30.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxxhdpi-v4\\ic_launcher.png
 145.set=ANDROID_RESOURCE
 213.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 82.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_lines_media.xml
+=======
+82.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_spinner.xml
+>>>>>>> Stashed changes
 136.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 188.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 111.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 163.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 106.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 194.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_main.xml
+=======
+194.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_list_menu_item_radio.xml
+>>>>>>> Stashed changes
 190.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 152.set=ANDROID_RESOURCE
 199.set=ANDROID_RESOURCE
@@ -155,6 +267,7 @@
 88.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 11.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 67.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png
+<<<<<<< Updated upstream
 219.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_template_big_media.xml
 42.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png
 117.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml
@@ -166,6 +279,19 @@
 123.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 221.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_spinner_textfield_background_material.xml
 144.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_list_menu_item_checkbox.xml
+=======
+219.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_voice_search_api_material.xml
+42.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_menu_hardkey_panel_mtrl_mult.9.png
+117.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\resources.arsc
+94.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\switch_thumb_material_light.xml
+148.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+69.set=ANDROID_RESOURCE
+169.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_tint_default.xml
+200.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+123.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+221.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_action.xml
+144.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-ldrtl-xxhdpi-v17\\abc_spinner_mtrl_am_alpha.9.png
+>>>>>>> Stashed changes
 175.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 120.set=ANDROID_RESOURCE
 226.set=ANDROID_RESOURCE
@@ -173,12 +299,17 @@
 150.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 76.set=ANDROID_RESOURCE
 48.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
+=======
+233.set=ANDROID_RESOURCE
+>>>>>>> Stashed changes
 174.set=ANDROID_RESOURCE
 23.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 37.set=ANDROID_RESOURCE
 75.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 227.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 50.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 206.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_simple.xml
 129.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v22\\abc_alert_dialog_button_bar_material.xml
 83.set=ANDROID_RESOURCE
@@ -189,6 +320,19 @@
 181.set=ANDROID_RESOURCE
 44.set=ANDROID_RESOURCE
 183.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png
+=======
+206.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_list_menu_item_icon.xml
+129.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_tint_switch_thumb.xml
+83.set=ANDROID_RESOURCE
+8.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+104.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_switch_thumb.xml
+233.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_slide_in_top.xml
+156.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_ratingbar_indicator_material.xml
+131.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_alert_dialog_title_material.xml
+181.set=ANDROID_RESOURCE
+44.set=ANDROID_RESOURCE
+183.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\select_dialog_item_material.xml
+>>>>>>> Stashed changes
 148.set=ANDROID_RESOURCE
 90.set=ANDROID_RESOURCE
 201.set=ANDROID_RESOURCE
@@ -200,7 +344,11 @@
 155.set=ANDROID_RESOURCE
 62.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 214.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 83.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_spinner.xml
+=======
+83.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\transparent.xml
+>>>>>>> Stashed changes
 137.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 12.set=ANDROID_RESOURCE
 189.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -208,9 +356,15 @@
 164.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 116.set=ANDROID_RESOURCE
 0.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 195.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_fade_in.xml
 191.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 170.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_secondary_text_material_dark.xml
+=======
+195.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_edittext.xml
+191.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+170.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_ratingbar_material.xml
+>>>>>>> Stashed changes
 162.set=ANDROID_RESOURCE
 37.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 123.set=ANDROID_RESOURCE
@@ -218,16 +372,27 @@
 89.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 12.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 68.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_select_dialog_material.xml
+<<<<<<< Updated upstream
 43.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_icon_background.xml
 118.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\notification_action.xml
 95.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_btn_default_mtrl_shape.xml
+=======
+43.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_48dp.png
+118.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_btn_colored_borderless_text_material.xml
+95.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_divider_mtrl_alpha.9.png
+>>>>>>> Stashed changes
 149.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 79.set=ANDROID_RESOURCE
 201.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 70.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_middle_mtrl_light.png
 124.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 222.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml
 145.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png
+=======
+222.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_template_big_media.xml
+145.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_list_menu_item_checkbox.xml
+>>>>>>> Stashed changes
 176.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 130.set=ANDROID_RESOURCE
 177.set=ANDROID_RESOURCE
@@ -240,6 +405,7 @@
 47.set=ANDROID_RESOURCE
 76.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 51.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 207.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_seekbar_thumb_material.xml
 93.set=ANDROID_RESOURCE
 204.set=ANDROID_RESOURCE
@@ -250,6 +416,19 @@
 132.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_list_menu_item_layout.xml
 54.set=ANDROID_RESOURCE
 184.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_tint_switch_track.xml
+=======
+207.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_switch_thumb_material.xml
+93.set=ANDROID_RESOURCE
+204.set=ANDROID_RESOURCE
+9.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+105.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_media_action.xml
+234.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png
+157.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v23\\abc_control_background_material.xml
+191.set=ANDROID_RESOURCE
+132.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_36dp.png
+54.set=ANDROID_RESOURCE
+184.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_primary_text_material_light.xml
+>>>>>>> Stashed changes
 158.set=ANDROID_RESOURCE
 211.set=ANDROID_RESOURCE
 15.set=ANDROID_RESOURCE
@@ -260,7 +439,11 @@
 32.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png
 165.set=ANDROID_RESOURCE
 63.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 215.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_e28cd9c49e12a931b4b3c12dfa1e6865aa7c3a2f
+=======
+215.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+>>>>>>> Stashed changes
 84.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-mdpi-v4\\ic_launcher.png
 138.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 22.set=ANDROID_RESOURCE
@@ -269,13 +452,19 @@
 165.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 126.set=ANDROID_RESOURCE
 140.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 196.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_right_mtrl_dark.png
 171.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png
+=======
+196.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_main.xml
+171.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png
+>>>>>>> Stashed changes
 38.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 133.set=ANDROID_RESOURCE
 17.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_cab_background_internal_bg.xml
 13.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 69.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_slide_in_bottom.xml
+<<<<<<< Updated upstream
 44.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_48dp.png
 119.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_popup_menu_header_item_layout.xml
 96.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_menu_layout.xml
@@ -285,11 +474,26 @@
 125.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 223.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_list_selector_holo_dark.xml
 146.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\select_dialog_multichoice_material.xml
+=======
+44.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_icon_background.xml
+119.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\notification_action.xml
+96.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_menu_layout.xml
+89.set=ANDROID_RESOURCE
+202.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+71.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_btn_colored_material.xml
+125.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+223.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_template_big_media_narrow.xml
+146.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png
+>>>>>>> Stashed changes
 177.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 100.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 140.set=ANDROID_RESOURCE
 187.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 4.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_default.xml
+=======
+4.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_expanded_menu_layout.xml
+>>>>>>> Stashed changes
 152.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 101.set=ANDROID_RESOURCE
 96.set=ANDROID_RESOURCE
@@ -299,6 +503,7 @@
 57.set=ANDROID_RESOURCE
 77.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 52.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 208.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_item_background_holo_dark.xml
 214.set=ANDROID_RESOURCE
 106.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_text_cursor_material.xml
@@ -310,6 +515,19 @@
 185.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ratingbar_small_material.xml
 6.set=ANDROID_RESOURCE
 160.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_switch_track_mtrl_alpha.9.png
+=======
+208.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_icon_group.xml
+214.set=ANDROID_RESOURCE
+106.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v16\\notification_template_custom_big.xml
+18.set=ANDROID_RESOURCE
+158.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_fade_out.xml
+210.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_seekbar_thumb_material.xml
+133.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_longpressed_holo.9.png
+64.set=ANDROID_RESOURCE
+185.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_seek_thumb.xml
+6.set=ANDROID_RESOURCE
+160.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_btn_colored_material.xml
+>>>>>>> Stashed changes
 168.set=ANDROID_RESOURCE
 221.set=ANDROID_RESOURCE
 25.set=ANDROID_RESOURCE
@@ -328,15 +546,22 @@
 166.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 136.set=ANDROID_RESOURCE
 141.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 197.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_color_highlight_material.xml
 120.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_tab_indicator_material.xml
 172.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_part_time.xml
+=======
+197.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_slide_out_top.xml
+120.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_tab_indicator_material.xml
+172.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png
+>>>>>>> Stashed changes
 39.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.set=ANDROID_RESOURCE
 18.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_big_media_narrow_custom.xml
 14.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 45.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\select_dialog_multichoice_material.xml
 228.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 99.set=ANDROID_RESOURCE
 104.set=ANDROID_RESOURCE
 97.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_grow_fade_in_from_bottom.xml
@@ -345,12 +570,26 @@
 72.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_btn_colored_material.xml
 126.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 224.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_tint_spinner.xml
+=======
+99.set=DEX
+104.set=ANDROID_RESOURCE
+97.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_btn_default_mtrl_shape.xml
+20.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_media.xml
+203.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+72.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_bar_title_item.xml
+126.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+224.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_spinner_textfield_background_material.xml
+>>>>>>> Stashed changes
 178.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 101.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 150.set=ANDROID_RESOURCE
 197.set=ANDROID_RESOURCE
 230.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 5.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_expanded_menu_layout.xml
+=======
+5.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_default.xml
+>>>>>>> Stashed changes
 153.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 180.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 111.set=ANDROID_RESOURCE
@@ -360,6 +599,7 @@
 9.set=ANDROID_RESOURCE
 78.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 53.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 209.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml
 224.set=ANDROID_RESOURCE
 107.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png
@@ -371,6 +611,19 @@
 74.set=ANDROID_RESOURCE
 186.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_mode_bar.xml
 161.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\select_dialog_singlechoice_material.xml
+=======
+209.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_simple.xml
+224.set=ANDROID_RESOURCE
+107.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_text_cursor_material.xml
+28.set=ANDROID_RESOURCE
+80.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+159.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_btn_colored_text_material.xml
+211.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_item_background_holo_dark.xml
+134.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_list_menu_item_layout.xml
+74.set=ANDROID_RESOURCE
+186.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png
+161.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_action_tombstone.xml
+>>>>>>> Stashed changes
 192.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 231.set=ANDROID_RESOURCE
 172.set=ANDROID_RESOURCE
@@ -390,10 +643,17 @@
 167.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 146.set=ANDROID_RESOURCE
 142.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 198.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml
 121.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-hdpi-v4\\ic_launcher_round.png
 0.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 173.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-hdpi-v4\\ic_launcher.png
+=======
+198.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_fade_in.xml
+121.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_popup_menu_header_item_layout.xml
+0.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+173.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_secondary_text_material_dark.xml
+>>>>>>> Stashed changes
 107.set=ANDROID_RESOURCE
 153.set=ANDROID_RESOURCE
 19.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_activity_chooser_view.xml
@@ -402,12 +662,21 @@
 46.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png
 229.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 114.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 98.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_e9fd141a141d1241de0a403ce2a2c324e881f111\\classes.dex
 21.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_bg_low.xml
 204.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 73.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_bar_title_item.xml
 127.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 225.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png
+=======
+98.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_grow_fade_in_from_bottom.xml
+21.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_bg_low.xml
+204.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+73.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_popup_menu_item_layout.xml
+127.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+225.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml
+>>>>>>> Stashed changes
 179.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 102.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 160.set=ANDROID_RESOURCE
@@ -417,11 +686,16 @@
 181.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 121.set=ANDROID_RESOURCE
 227.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 count=232
+=======
+count=235
+>>>>>>> Stashed changes
 27.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 77.set=ANDROID_RESOURCE
 79.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 54.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 175.set=ANDROID_RESOURCE
 108.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_dialog_material_background.xml
 38.set=ANDROID_RESOURCE
@@ -432,6 +706,19 @@ count=232
 187.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png
 110.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png
 162.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_edit_text_material.xml
+=======
+234.set=ANDROID_RESOURCE
+175.set=ANDROID_RESOURCE
+108.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png
+38.set=ANDROID_RESOURCE
+81.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+212.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml
+135.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xhdpi-v4\\ic_launcher.png
+84.set=ANDROID_RESOURCE
+187.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_tint_switch_track.xml
+110.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_clear_material.xml
+162.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_list_selector_holo_light.xml
+>>>>>>> Stashed changes
 193.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 182.set=ANDROID_RESOURCE
 45.set=ANDROID_RESOURCE
@@ -440,7 +727,11 @@ count=232
 202.set=ANDROID_RESOURCE
 35.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_light.9.png
 66.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 218.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+=======
+218.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_e28cd9c49e12a931b4b3c12dfa1e6865aa7c3a2f
+>>>>>>> Stashed changes
 87.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_ab_back_material.xml
 10.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_action.xml
 41.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -449,6 +740,7 @@ count=232
 93.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 168.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 156.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 147.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_cab_background_top_material.xml
 220.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 143.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -457,6 +749,16 @@ count=232
 13.set=ANDROID_RESOURCE
 1.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 174.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_bg.xml
+=======
+147.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\none_to_square.xml
+220.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+143.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+199.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_right_mtrl_dark.png
+122.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-hdpi-v4\\ic_launcher_round.png
+13.set=ANDROID_RESOURCE
+1.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+174.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png
+>>>>>>> Stashed changes
 117.set=ANDROID_RESOURCE
 1.set=ANDROID_RESOURCE
 163.set=ANDROID_RESOURCE
@@ -465,12 +767,22 @@ count=232
 47.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_media_custom.xml
 22.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_popup_exit.xml
 124.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 99.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_simple_overlay_action_mode.xml
 205.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 74.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_popup_menu_item_layout.xml
 128.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 226.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png
 103.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+=======
+99.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_e9fd141a141d1241de0a403ce2a2c324e881f111\\classes.dex
+205.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+74.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_textfield_search_material.xml
+128.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+226.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_list_selector_holo_dark.xml
+103.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+232.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+>>>>>>> Stashed changes
 155.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 7.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_bar_view_list_nav_layout.xml
 130.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -482,6 +794,7 @@ count=232
 55.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 30.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 185.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 109.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_clear_material.xml
 48.set=ANDROID_RESOURCE
 82.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -496,6 +809,22 @@ count=232
 192.set=ANDROID_RESOURCE
 55.set=ANDROID_RESOURCE
 190.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_focused_holo.9.png
+=======
+109.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_dialog_material_background.xml
+48.set=ANDROID_RESOURCE
+82.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+213.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_select_dialog_material.xml
+136.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_big_media_narrow.xml
+94.set=ANDROID_RESOURCE
+205.set=ANDROID_RESOURCE
+188.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ratingbar_small_material.xml
+111.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png
+163.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_switch_track_mtrl_alpha.9.png
+194.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+192.set=ANDROID_RESOURCE
+55.set=ANDROID_RESOURCE
+190.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png
+>>>>>>> Stashed changes
 159.set=ANDROID_RESOURCE
 212.set=ANDROID_RESOURCE
 16.set=ANDROID_RESOURCE
@@ -511,6 +840,7 @@ count=232
 94.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 169.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 166.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 148.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\notification_action_tombstone.xml
 221.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 144.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -520,17 +850,37 @@ count=232
 2.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 175.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_ratingbar_small_material.xml
 150.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_seekbar_track_material.xml
+=======
+148.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\select_dialog_multichoice_material.xml
+221.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+144.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+200.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_color_highlight_material.xml
+123.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_secondary_text_material_light.xml
+23.set=ANDROID_RESOURCE
+2.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+175.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\notification_template_part_time.xml
+150.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\notification_action_tombstone.xml
+>>>>>>> Stashed changes
 127.set=ANDROID_RESOURCE
 30.set=ANDROID_RESOURCE
 48.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_action_mode_close_item_material.xml
 23.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png
 134.set=ANDROID_RESOURCE
 206.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 75.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_textfield_search_material.xml
 129.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 227.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\ic_launcher_round.png
 50.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_search_url_text.xml
 104.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+=======
+75.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\switch_thumb_material_dark.xml
+129.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+227.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_tint_spinner.xml
+50.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_search_url_text.xml
+104.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+233.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+>>>>>>> Stashed changes
 156.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 8.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color-v23\\abc_tint_btn_checkable.xml
 131.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -547,6 +897,7 @@ count=232
 58.set=ANDROID_RESOURCE
 83.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 62.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_16dp.png
+<<<<<<< Updated upstream
 214.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_dialog_title_material.xml
 137.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_custom_big.xml
 215.set=DEX
@@ -558,19 +909,37 @@ count=232
 170.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 65.set=ANDROID_RESOURCE
 191.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_list_menu_item_radio.xml
+=======
+214.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxxhdpi-v4\\ic_launcher_round.png
+137.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png
+215.set=ANDROID_RESOURCE
+189.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_mode_bar.xml
+112.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_48dp.png
+19.set=ANDROID_RESOURCE
+164.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\select_dialog_singlechoice_material.xml
+195.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+170.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+65.set=ANDROID_RESOURCE
+191.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_alert_dialog_title_material.xml
+>>>>>>> Stashed changes
 7.set=ANDROID_RESOURCE
 169.set=ANDROID_RESOURCE
 222.set=ANDROID_RESOURCE
 26.set=ANDROID_RESOURCE
 37.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\abc_screen_toolbar.xml
 68.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 89.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\ic_launcher.png
+=======
+89.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\ball_to_square.xml
+>>>>>>> Stashed changes
 12.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_search_dropdown_item_icons_2line.xml
 43.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 72.set=ANDROID_RESOURCE
 118.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 95.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 70.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 149.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png
 222.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 145.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -581,15 +950,34 @@ count=232
 3.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 176.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_action_tombstone.xml
 151.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_search_view.xml
+=======
+149.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_cab_background_top_material.xml
+222.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+145.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+170.set=ANDROID_RESOURCE
+201.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml
+124.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_hint_foreground_material_light.xml
+33.set=ANDROID_RESOURCE
+3.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+176.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-hdpi-v4\\ic_launcher.png
+151.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_scrubber_primary_mtrl_alpha.9.png
+>>>>>>> Stashed changes
 137.set=ANDROID_RESOURCE
 40.set=ANDROID_RESOURCE
 49.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_dialog_title_material.xml
 24.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_menu_overflow_material.xml
 144.set=ANDROID_RESOURCE
 207.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 76.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\switch_thumb_material_dark.xml
 51.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_btn_colored_text_material.xml
 105.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+=======
+76.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_hint_foreground_material_dark.xml
+51.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_btn_colored_text_material.xml
+105.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+234.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+>>>>>>> Stashed changes
 9.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ratingbar_material.xml
 157.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 105.set=ANDROID_RESOURCE
@@ -598,12 +986,17 @@ count=232
 151.set=ANDROID_RESOURCE
 198.set=ANDROID_RESOURCE
 112.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 218.set=ANDROID_RESOURCE
+=======
+218.set=DEX
+>>>>>>> Stashed changes
 57.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 32.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 68.set=ANDROID_RESOURCE
 84.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 63.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_popup_background_mtrl_mult.9.png
+<<<<<<< Updated upstream
 215.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_e28cd9c49e12a931b4b3c12dfa1e6865aa7c3a2f\\classes.dex
 138.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png
 225.set=ANDROID_RESOURCE
@@ -615,6 +1008,20 @@ count=232
 140.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_menu_item_layout.xml
 171.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 75.set=ANDROID_RESOURCE
+=======
+215.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_action_bar_item_background_material.xml
+138.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_custom_big.xml
+225.set=ANDROID_RESOURCE
+113.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_activity_chooser_view_list_item.xml
+29.set=ANDROID_RESOURCE
+90.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\ic_launcher.png
+165.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_edit_text_material.xml
+196.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+140.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\notification_template_icon_group.xml
+171.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+75.set=ANDROID_RESOURCE
+232.set=ANDROID_RESOURCE
+>>>>>>> Stashed changes
 173.set=ANDROID_RESOURCE
 17.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 36.set=ANDROID_RESOURCE
@@ -629,6 +1036,7 @@ count=232
 223.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 146.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 180.set=ANDROID_RESOURCE
+<<<<<<< Updated upstream
 202.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_tile_bg.xml
 125.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_btn_check_material.xml
 43.set=ANDROID_RESOURCE
@@ -637,13 +1045,27 @@ count=232
 100.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_go_search_api_material.xml
 147.set=ANDROID_RESOURCE
 152.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ratingbar_indicator_material.xml
+=======
+202.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xhdpi-v4\\ic_launcher_round.png
+125.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png
+43.set=ANDROID_RESOURCE
+4.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+177.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v21\\abc_ratingbar_small_material.xml
+100.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_simple_overlay_action_mode.xml
+147.set=ANDROID_RESOURCE
+152.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\square_shape.xml
+>>>>>>> Stashed changes
 200.set=ANDROID_RESOURCE
 108.set=ANDROID_RESOURCE
 50.set=ANDROID_RESOURCE
 25.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_16dp.png
 154.set=ANDROID_RESOURCE
 208.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 77.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\color\\abc_hint_foreground_material_dark.xml
+=======
+77.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_spinner_mtrl_am_alpha.9.png
+>>>>>>> Stashed changes
 11.set=ANDROID_RESOURCE
 52.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_big_media.xml
 106.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
@@ -662,6 +1084,7 @@ count=232
 85.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 64.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_toolbar.xml
 60.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 216.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_voice_search_api_material.xml
 139.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v21\\notification_template_icon_group.xml
 176.set=ANDROID_RESOURCE
@@ -672,6 +1095,18 @@ count=232
 197.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 120.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 141.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_dark.9.png
+=======
+216.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_content_include.xml
+139.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png
+176.set=ANDROID_RESOURCE
+114.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\notification_template_big_media_custom.xml
+39.set=ANDROID_RESOURCE
+91.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_btn_check_to_on_mtrl_015.png
+166.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout-v17\\abc_popup_menu_item_layout.xml
+197.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+120.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+141.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_menu_item_layout.xml
+>>>>>>> Stashed changes
 172.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 85.set=ANDROID_RESOURCE
 183.set=ANDROID_RESOURCE
@@ -685,6 +1120,7 @@ count=232
 97.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 20.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 72.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+<<<<<<< Updated upstream
 228.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png
 224.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
 190.set=ANDROID_RESOURCE
@@ -696,4 +1132,17 @@ count=232
 101.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_action_bar_up_container.xml
 230.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\anim\\abc_slide_in_top.xml
 153.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-v23\\abc_control_background_material.xml
+=======
+228.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\abc_tab_indicator_mtrl_alpha.9.png
+224.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+190.set=ANDROID_RESOURCE
+203.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_search_api_material.xml
+126.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_btn_check_material.xml
+53.set=ANDROID_RESOURCE
+5.base=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_
+178.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\notification_bg.xml
+101.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_ic_go_search_api_material.xml
+230.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\mipmap-xxhdpi-v4\\ic_launcher_round.png
+153.file=C\:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\abc_seekbar_track_material.xml
+>>>>>>> Stashed changes
 157.set=ANDROID_RESOURCE

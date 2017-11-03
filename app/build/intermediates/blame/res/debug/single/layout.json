@@ -1,9 +1,12 @@
 [
     {
+<<<<<<< Updated upstream
         "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\layout\\notification_template_custom_big.xml"
     },
     {
+=======
+>>>>>>> Stashed changes
         "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
     },

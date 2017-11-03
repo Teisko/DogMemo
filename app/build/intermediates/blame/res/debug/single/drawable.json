@@ -12,6 +12,13 @@
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable\\notification_icon_background.xml"
     },
     {
+<<<<<<< Updated upstream
+=======
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\square_shape.xml",
+        "source": "C:\\androidProjects\\DogMemo\\app\\src\\main\\res\\drawable\\square_shape.xml"
+    },
+    {
+>>>>>>> Stashed changes
         "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
@@ -24,6 +31,13 @@
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
+<<<<<<< Updated upstream
+=======
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ball_to_square.xml",
+        "source": "C:\\androidProjects\\DogMemo\\app\\src\\main\\res\\drawable\\ball_to_square.xml"
+    },
+    {
+>>>>>>> Stashed changes
         "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable\\abc_ic_go_search_api_material.xml"
     },
@@ -44,6 +58,13 @@
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
+<<<<<<< Updated upstream
+=======
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\transparent.xml",
+        "source": "C:\\androidProjects\\DogMemo\\app\\src\\main\\res\\drawable\\transparent.xml"
+    },
+    {
+>>>>>>> Stashed changes
         "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_material.xml",
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable\\abc_ratingbar_material.xml"
     },
@@ -72,6 +93,13 @@
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
     },
     {
+<<<<<<< Updated upstream
+=======
+        "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\none_to_square.xml",
+        "source": "C:\\androidProjects\\DogMemo\\app\\src\\main\\res\\drawable\\none_to_square.xml"
+    },
+    {
+>>>>>>> Stashed changes
         "merged": "C:\\androidProjects\\DogMemo\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_holo_dark.xml",
         "source": "C:\\Users\\Väinö\\.android\\build-cache\\051cd798cc7202f6baf3b16ca1ce949633ba0c7d\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
