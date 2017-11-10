@@ -3,7 +3,7 @@
     <!-- Animaatio 1. itemistä 2. itemiin -->
     <item android:drawable="@drawable/transparent"/>
     <item
-        android:drawable="@drawable/square_shape"
+        android:drawable="@drawable/square_shape_green"
         android:top="-10dp"
         android:right="-10dp"
         android:bottom="-10dp"

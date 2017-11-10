@@ -1,8 +1,12 @@
 package com.example.teisko.dogmemo;
 
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
@@ -17,26 +21,44 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 import static com.example.teisko.dogmemo.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout mainActivity;
-    private TextView numberOfTouches;
-    private TextView ballShape1;
-    private TextView ballShape2;
+    private TextView numberOfTouches;               // näyttää aikalaskurin
+    private TextView ballShape1;                    // pallo / peite jonka alla pallo
+    private TextView ballShape2;                    // ballShape2-6 = tyhjä / peite jonka alla tyhjä
     private TextView ballShape3;
     private TextView ballShape4;
     private TextView ballShape5;
     private TextView ballShape6;
+
+    final String RED = "#ff0000";                   // Vakioita väreille
+    final String BLUE = "#0000ff";
+    final String GREEN = "#00ff00";
+    final String PREF_FILE_NAME = "PrefFile";       // Tiedosto, johon asetukset tallennetaan ja josta ne haetaan
+
+    String ballColor = RED;                         // pallon väri, haetaan asetuksista
+    String squareColor = BLUE;                      // peitteiden väri, haetaan asetuksista
+    int ballBackground;                             // pallon Drawable kuvio
+    int ballToSquare;                               // pallosta peitteeseen animaatio TransitionDrawable
+    int transpToSquare;                             // tyhjästä peitteeseen animaatio TransitionDrawable
     // Oikeat painallukset & kaikki painallukset
-    int number = 0;
-    int allTouches = 0;
+    int number = 0;                                 // oikeiden painallusten määrä
+    int allTouches = 0;                             // kaikkien painallusten määrä
     // Pelin kesto sekunteina
-    int gameTime = 60;
-    int width;
-    int height;
+    int gameTime = 60;                              // pelin kesto sekunteina, haetaan asetuksista
+    int ballVisibleTime = 2000;                     // pallon näkyvissäolon kesto ennen kuin se peitetään millisekunteina, haetaan asetuksista
+    int transitionLength = 2000;                    // peiteanimaation kesto millisekunteina, haetaan asetuksista
+    int width;                                      // näytön leveys pikseleinä
+    int height;                                     // näytön korkeus pikseleinä
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +74,26 @@ public class MainActivity extends AppCompatActivity {
         mainActivity = (ConstraintLayout) findViewById(R.id.mainactivity);
         numberOfTouches = (TextView) findViewById(R.id.numberOfTouches);
         ballShape1 = (TextView) findViewById(R.id.ballShape);
+        ballShape2 = new TextView(this);
+        ballShape3 = new TextView(this);
+        ballShape4 = new TextView(this);
+        ballShape5 = new TextView(this);
+        ballShape6 = new TextView(this);
+
+        // hakee tallennetut asetukset, jos ne ovat olemassa
+        SharedPreferences sharedPref = getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
+        if (!sharedPref.getString("ball_color_list", "").equals(""))
+            ballColor = sharedPref.getString("ball_color_list", "");
+        if (!sharedPref.getString("square_color_list", "").equals(""))
+            squareColor = sharedPref.getString("square_color_list", "");
+        if (!sharedPref.getString("gametime_list", "").equals(""))
+            gameTime = Integer.parseInt(sharedPref.getString("gametime_list", ""));
+        if (!sharedPref.getString("ball_visible_time_list", "").equals(""))
+            ballVisibleTime = Integer.parseInt(sharedPref.getString("ball_visible_time_list", ""));
+        if (!sharedPref.getString("cover_animation_time_list", "").equals(""))
+            transitionLength = Integer.parseInt(sharedPref.getString("cover_animation_time_list", ""));
+        // asettaa haetut värit
+        setColors();
 
         // Näytön koko pikseleinä
         Display display = getWindowManager().getDefaultDisplay();
@@ -94,19 +136,30 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Peliaikalaskuri, peli loppuu kun aika loppuu
-        numberOfTouches.setText("" + gameTime);
+        // muuta peliaika mm:ss formaattiin
+        Date d = new Date(gameTime * 1000L);
+        SimpleDateFormat df = new SimpleDateFormat("mm:ss");
+        df.setTimeZone(TimeZone.getTimeZone("GMT"));
+        String time = df.format(d);
+        numberOfTouches.setText(time);
+        // laske aikaa yhdellä sekuntin välein
         final Handler timeTickHandler = new Handler();
         // 1 sekunti
         final int delay = 1000;
         timeTickHandler.postDelayed(new Runnable() {
             public void run() {
                 gameTime = gameTime-1;
-                numberOfTouches.setText("" + gameTime);
-                timeTickHandler.postDelayed(this, delay);
+                // muuta peliaika mm:ss formaattiin
+                Date d = new Date(gameTime * 1000L);
+                SimpleDateFormat df = new SimpleDateFormat("mm:ss");
+                df.setTimeZone(TimeZone.getTimeZone("GMT"));
+                String time = df.format(d);
+                numberOfTouches.setText(time);
                 if (gameTime == 0) {
                     timeTickHandler.removeCallbacks(this);
                     gameOver();
                 }
+                timeTickHandler.postDelayed(this, delay);
             }
         }, delay);
     }
@@ -196,7 +249,6 @@ public class MainActivity extends AppCompatActivity {
         if (number >= 7 && number <= 11) { // 7-11
             if (number == 7) {
                 // lisätään 2. peite
-                ballShape2 = new TextView(this);
                 mainActivity.addView(ballShape2);
 
                 // liikutetaan 1. peite
@@ -208,8 +260,8 @@ public class MainActivity extends AppCompatActivity {
             }
             // Arpoo pallon paikan
             randomSpot(2);
-            // Asettaa pallon ja tyhjät
-            setBackground(2);
+            // Asetetaan transparent kuvio
+            ballShape2.setBackgroundResource(R.drawable.transparent);
             // Animoi peitteet
             doTransition(2);
         }
@@ -218,7 +270,6 @@ public class MainActivity extends AppCompatActivity {
         if (number >= 12 && number <= 16) { // 12-16
             if (number == 12) {
                 // lisätään 3. peite
-                ballShape3 = new TextView(this);
                 mainActivity.addView(ballShape3);
 
                 // liikutetaan 1. peite
@@ -233,8 +284,8 @@ public class MainActivity extends AppCompatActivity {
             }
             // Arpoo pallon paikan
             randomSpot(3);
-            // Asettaa pallon ja tyhjät
-            setBackground(3);
+            // Asetetaan transparent kuvio
+            ballShape3.setBackgroundResource(R.drawable.transparent);
             // Animoi peitteet
             doTransition(3);
         }
@@ -243,7 +294,6 @@ public class MainActivity extends AppCompatActivity {
         if (number >= 17 && number <= 21) { // 17-21
             if (number == 17) {
                 // lisätään 4. peite
-                ballShape4 = new TextView(this);
                 mainActivity.addView(ballShape4);
 
                 // liikutetaan 1. peite
@@ -261,8 +311,8 @@ public class MainActivity extends AppCompatActivity {
             }
             // Arpoo pallon paikan
             randomSpot(4);
-            // Asettaa pallon ja tyhjät
-            setBackground(4);
+            // Asetetaan transparent kuvio
+            ballShape4.setBackgroundResource(R.drawable.transparent);
             // Animoi peitteet
             doTransition(4);
         }
@@ -271,7 +321,6 @@ public class MainActivity extends AppCompatActivity {
         if (number >= 22 && number <= 26) { // 22-26
             if (number == 22) {
                 // lisätään 5. peite
-                ballShape5 = new TextView(this);
                 mainActivity.addView(ballShape5);
 
                 // liikutetaan 1. peite
@@ -292,8 +341,8 @@ public class MainActivity extends AppCompatActivity {
             }
             // Arpoo pallon paikan
             randomSpot(5);
-            // Asettaa pallon ja tyhjät
-            setBackground(5);
+            // Asetetaan transparent kuvio
+            ballShape5.setBackgroundResource(R.drawable.transparent);
             // Animoi peitteet
             doTransition(5);
         }
@@ -302,7 +351,6 @@ public class MainActivity extends AppCompatActivity {
         if (number >= 27 /*&& number <= 31*/) { // 27-31
             if (number == 27) {
                 // lisätään 6. peite
-                ballShape6 = new TextView(this);
                 mainActivity.addView(ballShape6);
 
                 // liikutetaan 1. peite
@@ -326,8 +374,8 @@ public class MainActivity extends AppCompatActivity {
             }
             // Arpoo pallon paikan
             randomSpot(6);
-            // Asettaa pallon ja tyhjät
-            setBackground(6);
+            // Asetetaan transparent kuvio
+            ballShape6.setBackgroundResource(R.drawable.transparent);
             // Animoi peitteet
             doTransition(6);
         }
@@ -374,70 +422,72 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Asettaa pallon ja tyhjät, n = paikkojen lkm
-    public void setBackground(int n) {
-        if (n >= 1) {
-            ballShape1.setBackgroundResource(R.drawable.ball_shape);
-        }
-        if (n >= 2) {
-            ballShape2.setBackgroundResource(R.drawable.transparent);
-        }
-        if (n >= 3) {
-            ballShape3.setBackgroundResource(R.drawable.transparent);
-        }
-        if (n >= 4) {
-            ballShape4.setBackgroundResource(R.drawable.transparent);
-        }
-        if (n >= 5) {
-            ballShape5.setBackgroundResource(R.drawable.transparent);
-        }
-        if (n >= 6) {
-            ballShape6.setBackgroundResource(R.drawable.transparent);
-        }
-    }
-
     // Animoi peitteen pallon ja tyhjien tilalle, n = paikkojen lkm
-    public void doTransition(int n) {
-        int length = 1000;
-        if (n >= 1) {
-            ballShape1.setBackgroundResource(R.drawable.ball_to_square);
-            TransitionDrawable transition = (TransitionDrawable) ballShape1.getBackground();
-            transition.startTransition(length);
-        }
-        if (n >= 2) {
-            ballShape2.setBackgroundResource(R.drawable.none_to_square);
-            TransitionDrawable transition2 = (TransitionDrawable) ballShape2.getBackground();
-            transition2.startTransition(length);
-        }
-        if (n >= 3) {
-            ballShape3.setBackgroundResource(R.drawable.none_to_square);
-            TransitionDrawable transition3 = (TransitionDrawable) ballShape3.getBackground();
-            transition3.startTransition(length);
-        }
-        if (n >= 4) {
-            ballShape4.setBackgroundResource(R.drawable.none_to_square);
-            TransitionDrawable transition4 = (TransitionDrawable) ballShape4.getBackground();
-            transition4.startTransition(length);
-        }
-        if (n >= 5) {
-            ballShape5.setBackgroundResource(R.drawable.none_to_square);
-            TransitionDrawable transition5 = (TransitionDrawable) ballShape5.getBackground();
-            transition5.startTransition(length);
-        }
-        if (n >= 6) {
-            ballShape6.setBackgroundResource(R.drawable.none_to_square);
-            TransitionDrawable transition6 = (TransitionDrawable) ballShape6.getBackground();
-            transition6.startTransition(length);
-        }
+    public void doTransition(int m) {
+        final int n = m;
 
-        // katko kosketuksen tunnistukseen
+        // asetetaan pallon ja tyhjien kuviot
+        if (n >= 1)
+            ballShape1.setBackgroundResource(ballBackground);
+        if (n >= 2)
+            ballShape2.setBackgroundResource(R.drawable.transparent);
+        if (n >= 3)
+            ballShape3.setBackgroundResource(R.drawable.transparent);
+        if (n >= 4)
+            ballShape4.setBackgroundResource(R.drawable.transparent);
+        if (n >= 5)
+            ballShape5.setBackgroundResource(R.drawable.transparent);
+        if (n >= 6)
+            ballShape6.setBackgroundResource(R.drawable.transparent);
+
+        // katko pallon kosketuksen tunnistukseen kunnes pallo on peitetty
         ballShape1.setEnabled(false);
         Handler touchHandler = new android.os.Handler();
         touchHandler.postDelayed(new Runnable() {
             public void run() {
                 ballShape1.setEnabled(true);
             }
-        }, length);
+        }, ballVisibleTime + transitionLength);
+
+        // Pallo näkyy ballVisibleTime ajan, jonka jälkeen se peitetään
+        // peiteanimaatio kestää transitionLength ajan
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            // tämä suoritetaan viiveen ballVisibleTime jälkeen
+            public void run() {
+                if (n >= 1) {
+                    ballShape1.setBackgroundResource(ballToSquare);
+                    TransitionDrawable transition = (TransitionDrawable) ballShape1.getBackground();
+                    transition.startTransition(transitionLength);
+                }
+                if (n >= 2) {
+                    ballShape2.setBackgroundResource(transpToSquare);
+                    TransitionDrawable transition2 = (TransitionDrawable) ballShape2.getBackground();
+                    transition2.startTransition(transitionLength);
+                }
+                if (n >= 3) {
+                    ballShape3.setBackgroundResource(transpToSquare);
+                    TransitionDrawable transition3 = (TransitionDrawable) ballShape3.getBackground();
+                    transition3.startTransition(transitionLength);
+                }
+                if (n >= 4) {
+                    ballShape4.setBackgroundResource(transpToSquare);
+                    TransitionDrawable transition4 = (TransitionDrawable) ballShape4.getBackground();
+                    transition4.startTransition(transitionLength);
+                }
+                if (n >= 5) {
+                    ballShape5.setBackgroundResource(transpToSquare);
+                    TransitionDrawable transition5 = (TransitionDrawable) ballShape5.getBackground();
+                    transition5.startTransition(transitionLength);
+                }
+                if (n >= 6) {
+                    ballShape6.setBackgroundResource(transpToSquare);
+                    TransitionDrawable transition6 = (TransitionDrawable) ballShape6.getBackground();
+                    transition6.startTransition(transitionLength);
+                }
+            }
+        }, ballVisibleTime);
     }
 
     public void gameOver() {
@@ -460,7 +510,7 @@ public class MainActivity extends AppCompatActivity {
         // näytetään tulokset
         TextView results = new TextView(this);
         float prosentti = (float)number/allTouches*100;
-        results.setText("Oikein: " + number + "/" + allTouches + " " + (int)prosentti + "%");
+        results.setText("Oikein: " + number + "/" + allTouches + ", " + (int)prosentti + "%");
         results.setTextSize(30);
         results.measure(0,0);
         results.setX(width/2 - results.getMeasuredWidth()/2);
@@ -502,5 +552,66 @@ public class MainActivity extends AppCompatActivity {
     // Aloittaa uuden pelin
     public void restartGame() {
         this.recreate();
+    }
+
+    // Asettaa kuvioiden värit
+    public void setColors() {
+
+        // ballShape1 eli pallon väri
+        if (ballColor.equalsIgnoreCase(RED)) {
+            ballBackground = R.drawable.ball_shape_red;
+        }
+        if (ballColor.equalsIgnoreCase(BLUE)) {
+            ballBackground = R.drawable.ball_shape_blue;
+        }
+        if (ballColor.equalsIgnoreCase(GREEN)) {
+            ballBackground = R.drawable.ball_shape_green;
+        }
+        ballShape1.setBackgroundResource(ballBackground);
+
+        //Drawable ballDrawable = this.getResources().getDrawable(R.drawable.ball_shape_red);
+        //Drawable bg = ballShape1.getBackground();
+        //bg.setColorFilter(Color.parseColor(ballColor), PorterDuff.Mode.SRC_ATOP);
+        //if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        //    ballShape1.setBackgroundDrawable(bg);
+        //}
+        //else {
+        //    ballShape1.setBackground(bg);
+        //}
+
+        // tyhjä --> neliö animaatioissa olevien neliöiden väri
+        if (squareColor.equalsIgnoreCase(RED))
+            transpToSquare = R.drawable.transp_to_square_red;
+        if (squareColor.equalsIgnoreCase(BLUE))
+            transpToSquare = R.drawable.transp_to_square_blue;
+        if (squareColor.equalsIgnoreCase(GREEN))
+            transpToSquare = R.drawable.transp_to_square_green;
+
+        // pallo --> neliö animaatioissa olevien pallojen ja neliöiden värit
+        if (ballColor.equalsIgnoreCase(RED)) {
+            if (squareColor.equalsIgnoreCase(RED))
+                //ballToSquare = this.getResources().getDrawable(R.drawable.ball_red_to_square_red);
+                ballToSquare = R.drawable.ball_red_to_square_red;
+            if (squareColor.equalsIgnoreCase(BLUE))
+                ballToSquare = R.drawable.ball_red_to_square_blue;
+            if (squareColor.equalsIgnoreCase(GREEN))
+                ballToSquare = R.drawable.ball_red_to_square_green;
+        }
+        if (ballColor.equalsIgnoreCase(BLUE)) {
+            if (squareColor.equalsIgnoreCase(RED))
+                ballToSquare = R.drawable.ball_blue_to_square_red;
+            if (squareColor.equalsIgnoreCase(BLUE))
+                ballToSquare = R.drawable.ball_blue_to_square_blue;
+            if (squareColor.equalsIgnoreCase(GREEN))
+                ballToSquare = R.drawable.ball_blue_to_square_green;
+        }
+        if (ballColor.equalsIgnoreCase(GREEN)) {
+            if (squareColor.equalsIgnoreCase(RED))
+                ballToSquare = R.drawable.ball_green_to_square_red;
+            if (squareColor.equalsIgnoreCase(BLUE))
+                ballToSquare = R.drawable.ball_green_to_square_blue;
+            if (squareColor.equalsIgnoreCase(GREEN))
+                ballToSquare = R.drawable.ball_green_to_square_green;
+        }
     }
 }
