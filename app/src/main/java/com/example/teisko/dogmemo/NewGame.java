@@ -1,0 +1,51 @@
+package com.example.teisko.dogmemo;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class NewGame extends AppCompatActivity {
+
+    /* Attribuutteja
+     *
+     */
+    Button button_start;
+    RadioGroup radioGroup;
+    RadioButton radio_normaali;
+    RadioButton radio_valinnainen;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_new_game);
+
+        // Yhdistetään attribuutit niitä vastaaviin näyttöolioihin
+        button_start = (Button)findViewById(R.id.button_start);
+        radio_normaali = (RadioButton)findViewById(R.id.radio_normaali);
+        radio_valinnainen = (RadioButton)findViewById(R.id.radio_valinnainen);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+        button_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent avaus = new Intent(v.getContext(), MainActivity.class);
+                startActivity(avaus);
+            }
+        });
+
+        // Luodaan esimerkkilista                                                   -HUOM: poista sisältö kun pelaajan lisäys toimii
+        String[] dogs = {"Koira1", "Koira2", "Koira3", "Koira4", "Koira5", "Koira6", "Koira7", "Koira8", "Koira9"};
+        ListAdapter dogsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dogs);
+        ListView dogList = (ListView)findViewById(R.id.dogList);
+        dogList.setAdapter(dogsAdapter);
+    }
+}

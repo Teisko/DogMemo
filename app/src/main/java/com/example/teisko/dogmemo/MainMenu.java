@@ -8,24 +8,44 @@ import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
 
-    public Button button_uusi;
-
-    public void init()
-    {
-        button_uusi = (Button)findViewById(R.id.button_uusi);
-        button_uusi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent avaus = new Intent(MainMenu.this, MainActivity.class);
-                startActivity(avaus);
-            }
-        });
-    }
+    Button button_uusi;
+    Button button_asetukset;
+    Button button_tilastot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        init();
+
+        button_uusi = (Button)findViewById(R.id.button_uusi);
+        button_uusi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent avaus = new Intent(v.getContext(), NewGame.class);
+                startActivity(avaus);
+            }
+        });
+
+    /*
+        button_uusi = (Button)findViewById(R.id.button_asetukset);
+        button_uusi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent avaus = new Intent(v.getContext(), Settings.class);
+                startActivity(avaus);
+            }
+        });
+
+        button_uusi = (Button)findViewById(R.id.button_tilastot);
+        button_uusi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent avaus = new Intent(v.getContext(), MainActivity.class);
+                startActivity(avaus);
+            }
+        });
+     */
+
+
     }
 }
