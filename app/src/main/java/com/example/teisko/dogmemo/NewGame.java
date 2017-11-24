@@ -19,6 +19,8 @@ public class NewGame extends AppCompatActivity {
      *
      */
     Button button_start;
+    Button button_addPlayer;
+
     RadioGroup radioGroup;
     RadioButton radio_normaali;
     RadioButton radio_valinnainen;
@@ -30,9 +32,19 @@ public class NewGame extends AppCompatActivity {
 
         // Yhdistetään attribuutit niitä vastaaviin näyttöolioihin
         button_start = (Button)findViewById(R.id.button_start);
+        button_addPlayer = (Button)findViewById(R.id.button_addPlayer);
+
         radio_normaali = (RadioButton)findViewById(R.id.radio_normaali);
         radio_valinnainen = (RadioButton)findViewById(R.id.radio_valinnainen);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+        button_addPlayer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent avaus = new Intent(v.getContext(), NewPlayer.class);
+                startActivity(avaus);
+            }
+        });
 
         button_start.setOnClickListener(new View.OnClickListener() {
             @Override

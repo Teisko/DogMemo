@@ -4,4 +4,8 @@
     <string name="add_player">Lisää uusi pelaaja</string>
     <string name="radio_normaali">Normaali peli</string>
     <string name="radio_valinnainen">Pelaa vain yhtä tasoa</string>
+    <string name="nimi">Nimi</string>
+    <string name="rotu">Rotu</string>
+    <string name="syntyma">Syntymäpäivä</string>
+    <string name="tallenna">Tallenna pelaajaprofiili</string>
 </resources>
