@@ -3,11 +3,7 @@ package com.example.teisko.dogmemo;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.Point;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -32,31 +28,38 @@ import static com.example.teisko.dogmemo.R.layout.activity_main;
 public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout mainActivity;
-    private TextView numberOfTouches;               // näyttää aikalaskurin
-    private TextView ballShape1;                    // pallo / peite jonka alla pallo
-    private TextView ballShape2;                    // ballShape2-6 = tyhjä / peite jonka alla tyhjä
-    private TextView ballShape3;
-    private TextView ballShape4;
-    private TextView ballShape5;
-    private TextView ballShape6;
+    private TextView countdown;                     // näyttää aikalaskurin
+    private TextView ball;                          // pallo / peite jonka alla pallo
+    private TextView empty1;                        // empty1-3 tyhjä / peite jonka alla tyhjä
+    private TextView empty2;
+    private TextView empty3;
+    private TextView movingCover1;                  // movingCover1-4 liikkuvat peitteet
+    private TextView movingCover2;
+    private TextView movingCover3;
+    private TextView movingCover4;
 
     final String RED = "#ff0000";                   // Vakioita väreille
     final String BLUE = "#0000ff";
-    final String GREEN = "#00ff00";
-    final String PREF_FILE_NAME = "PrefFile";       // Tiedosto, johon asetukset tallennetaan ja josta ne haetaan
+    final String BLACK = "#000000";
+    final String PREF_FILE_NAME = "PrefFile";       // Tiedosto, josta asetukset haetaan
 
     String ballColor = RED;                         // pallon väri, haetaan asetuksista
     String squareColor = BLUE;                      // peitteiden väri, haetaan asetuksista
     int ballBackground;                             // pallon Drawable kuvio
-    int ballToSquare;                               // pallosta peitteeseen animaatio TransitionDrawable
-    int transpToSquare;                             // tyhjästä peitteeseen animaatio TransitionDrawable
+    int squareBackground;                           // peitteen Drawable kuvio
     // Oikeat painallukset & kaikki painallukset
-    int number = 0;                                 // oikeiden painallusten määrä
+    int correctTouches = 0;                         // oikeiden painallusten määrä
     int allTouches = 0;                             // kaikkien painallusten määrä
+    int level = 0;                                  // nykyinen taso pelissä
+    int levelCorrectTouches = 0;                    // pisteet nykyisellä levelillä
+    int levelAllTouches = 0;                        // kaikki kosketukset kyseisen levelin aikana, lähtöarvo 1 koska jostain syystä 1. leveli loppuu muuten liian aikaisin
+    int pointsForLevel = 5;                         // vaadittavat pisteet etenemiseen, haetaan asetuksista
+    boolean newLevel = false;                       // true kun päästään uudelle levelille
     // Pelin kesto sekunteina
     int gameTime = 60;                              // pelin kesto sekunteina, haetaan asetuksista
+    int ballHiddenTime = 2000;                      // pallon piilossaolon kesto oikean painalluksen jälkeen millisekunteina
     int ballVisibleTime = 2000;                     // pallon näkyvissäolon kesto ennen kuin se peitetään millisekunteina, haetaan asetuksista
-    int transitionLength = 2000;                    // peiteanimaation kesto millisekunteina, haetaan asetuksista
+    int animationLength = 2000;                     // peiteanimaation kesto millisekunteina, haetaan asetuksista
     int width;                                      // näytön leveys pikseleinä
     int height;                                     // näytön korkeus pikseleinä
 
@@ -72,26 +75,52 @@ public class MainActivity extends AppCompatActivity {
 
         // muuttujia
         mainActivity = (ConstraintLayout) findViewById(R.id.mainactivity);
-        numberOfTouches = (TextView) findViewById(R.id.numberOfTouches);
-        ballShape1 = (TextView) findViewById(R.id.ballShape);
-        ballShape2 = new TextView(this);
-        ballShape3 = new TextView(this);
-        ballShape4 = new TextView(this);
-        ballShape5 = new TextView(this);
-        ballShape6 = new TextView(this);
+        countdown = (TextView) findViewById(R.id.numberOfTouches);
+        ball = (TextView) findViewById(R.id.ballShape);
+        empty1 = new TextView(this);
+        empty2 = new TextView(this);
+        empty3 = new TextView(this);
+        empty1.setVisibility(View.INVISIBLE);
+        empty2.setVisibility(View.INVISIBLE);
+        empty3.setVisibility(View.INVISIBLE);
+        mainActivity.addView(empty1);
+        mainActivity.addView(empty2);
+        mainActivity.addView(empty3);
+        movingCover1 = new TextView(this);
+        movingCover2 = new TextView(this);
+        movingCover3 = new TextView(this);
+        movingCover4 = new TextView(this);
+        movingCover1.setVisibility(View.INVISIBLE);
+        movingCover2.setVisibility(View.INVISIBLE);
+        movingCover3.setVisibility(View.INVISIBLE);
+        movingCover4.setVisibility(View.INVISIBLE);
+        mainActivity.addView(movingCover1);
+        mainActivity.addView(movingCover2);
+        mainActivity.addView(movingCover3);
+        mainActivity.addView(movingCover4);
 
         // hakee tallennetut asetukset, jos ne ovat olemassa
         SharedPreferences sharedPref = getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
+        // pallon väri
         if (!sharedPref.getString("ball_color_list", "").equals(""))
             ballColor = sharedPref.getString("ball_color_list", "");
+        // peitteiden väri
         if (!sharedPref.getString("square_color_list", "").equals(""))
             squareColor = sharedPref.getString("square_color_list", "");
+        // peliaika
         if (!sharedPref.getString("gametime_list", "").equals(""))
             gameTime = Integer.parseInt(sharedPref.getString("gametime_list", ""));
+        // pallon piilossaoloaika oikean painalluksen jälkeen
+        if (!sharedPref.getString("ball_hidden_time_list", "").equals(""))
+            ballHiddenTime = Integer.parseInt(sharedPref.getString("ball_hidden_time_list", ""));
+        // pallon näkyvissäoloaika ennen peiteanimaation alkua
         if (!sharedPref.getString("ball_visible_time_list", "").equals(""))
             ballVisibleTime = Integer.parseInt(sharedPref.getString("ball_visible_time_list", ""));
+        // // peiteanimaation kesto
         if (!sharedPref.getString("cover_animation_time_list", "").equals(""))
-            transitionLength = Integer.parseInt(sharedPref.getString("cover_animation_time_list", ""));
+            animationLength = Integer.parseInt(sharedPref.getString("cover_animation_time_list", ""));
+        if (!sharedPref.getString("level_points_list", "").equals(""))
+            pointsForLevel = Integer.parseInt(sharedPref.getString("level_points_list", ""));
         // asettaa haetut värit
         setColors();
 
@@ -103,18 +132,18 @@ public class MainActivity extends AppCompatActivity {
         height = size.y;
 
         // Asettaa pallon keskelle näyttöä pelin alkaessa näytön piirron jälkeen
-        ballShape1.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                ballShape1.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 // Pallo keskelle
-                ballShape1.setX(width/2 - ballShape1.getWidth()/2);
-                ballShape1.setY(height/2 - ballShape1.getHeight()/2);
+                ball.setX(width/2 - ball.getWidth()/2);
+                ball.setY(height/2 - ball.getHeight()/2);
             }
         });
 
         // Pallon kosketuksen kuuntelija
-        ballShape1.setOnTouchListener(new View.OnTouchListener() {
+        ball.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -130,6 +159,29 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     allTouches++;
+                    levelAllTouches++;
+
+                    // levelin nousu
+                    if (levelCorrectTouches == (levelAllTouches - levelCorrectTouches) + pointsForLevel) {
+                        level++;
+                        newLevel = true;
+                        levelCorrectTouches = 0;
+                        levelAllTouches = 0;
+                    }
+
+                    // levelin tippuminen
+                    if (levelAllTouches - levelCorrectTouches == levelCorrectTouches + pointsForLevel) {
+                        if (level >= 2) {
+                            level = level-2;
+                        }
+                        else {
+                            level = 0;
+                        }
+                        newLevel = true;
+                        levelAllTouches = 0;
+                        levelCorrectTouches = 0;
+                        drawLevel();
+                    }
                 }
                 return false;
             }
@@ -141,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("mm:ss");
         df.setTimeZone(TimeZone.getTimeZone("GMT"));
         String time = df.format(d);
-        numberOfTouches.setText(time);
+        countdown.setText(time);
         // laske aikaa yhdellä sekuntin välein
         final Handler timeTickHandler = new Handler();
         // 1 sekunti
@@ -154,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("mm:ss");
                 df.setTimeZone(TimeZone.getTimeZone("GMT"));
                 String time = df.format(d);
-                numberOfTouches.setText(time);
+                countdown.setText(time);
                 if (gameTime == 0) {
                     timeTickHandler.removeCallbacks(this);
                     gameOver();
@@ -166,325 +218,294 @@ public class MainActivity extends AppCompatActivity {
 
     // Kutsutaan kun palloa kosketetaan
     public void ballShapeOnClick() {
-        // Aluksi pallo on keskellä 300dp kokoisena
-        // pienennä pallo 200dp kokoiseksi
-        if (number == 0) {
-            // muuta pallon kokoa
-            DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
-            int px = Math.round(200 * (dm.densityDpi / 160f));
-            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ballShape1.getLayoutParams();
-            params.width = px;
-            params.height = px;
-            ballShape1.setLayoutParams(params);
+        // Lisää pisteet ja nosta leveliä tarvittaessa
+        correctTouches++;
+        levelCorrectTouches++;
+        drawLevel();
+    }
 
-            // Asettaa pallon keskelle näyttöä koon muuttamisen jälkeen
-            ballShape1.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    ballShape1.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    // Pallo keskelle
-                    ballShape1.setX(width/2 - ballShape1.getWidth()/2);
-                    ballShape1.setY(height/2 - ballShape1.getHeight()/2);
+    public void drawLevel() {
+        // piilotetaan pallo ja peitteet näkyvistä
+        ball.setVisibility(View.INVISIBLE);
+        ball.setBackgroundResource(ballBackground);
+        empty1.setVisibility(View.INVISIBLE);
+        empty2.setVisibility(View.INVISIBLE);
+        empty3.setVisibility(View.INVISIBLE);
+
+        // katko näytön kosketuksen tunnistukseen kunnes pallosta tulee taas näkyvä
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        Handler touchHandler = new android.os.Handler();
+        touchHandler.postDelayed(new Runnable() {
+            public void run() {
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+            }
+        }, ballHiddenTime);
+
+        // Viiveen ballHiddenTime jälkeen pallosta tulee taas näkyvä
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            // tämä suoritetaan viiveen ballHiddenTime jälkeen
+            public void run() {
+                ball.setVisibility(View.VISIBLE);
+
+                // Aluksi pallo on keskellä 300dp kokoisena
+                if (level == 0) {
+                    // muuta pallon kokoa
+                    DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
+                    int px = Math.round(300 * (dm.densityDpi / 160f));
+                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ball.getLayoutParams();
+                    params.width = px;
+                    params.height = px;
+                    ball.setLayoutParams(params);
+
+                    // Asettaa pallon keskelle näyttöä koon muuttamisen jälkeen
+                    ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            // Pallo keskelle
+                            ball.setX(width/2 - ball.getWidth()/2);
+                            ball.setY(height/2 - ball.getHeight()/2);
+                        }
+                    });
                 }
-            });
-        }
 
-        // pienennä pallo 120dp kokoiseksi
-        if (number == 1) {
-            // muuta pallon kokoa
-            DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
-            int px = Math.round(120 * (dm.densityDpi / 160f));
-            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ballShape1.getLayoutParams();
-            params.width = px;
-            params.height = px;
-            ballShape1.setLayoutParams(params);
+                // pienennä pallo 150dp kokoiseksi
+                if (level == 1) {
+                    // muuta pallon kokoa
+                    DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
+                    int px = Math.round(150 * (dm.densityDpi / 160f));
+                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ball.getLayoutParams();
+                    params.width = px;
+                    params.height = px;
+                    ball.setLayoutParams(params);
 
-            // Asettaa pallon keskelle näyttöä koon muuttamisen jälkeen
-            ballShape1.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    ballShape1.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    // Pallo keskelle
-                    ballShape1.setX(width/2 - ballShape1.getWidth()/2);
-                    ballShape1.setY(height/2 - ballShape1.getHeight()/2);
+                    // Asettaa pallon keskelle näyttöä koon muuttamisen jälkeen
+                    ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            // Pallo keskelle
+                            ball.setX(width/2 - ball.getWidth()/2);
+                            ball.setY(height/2 - ball.getHeight()/2);
+                        }
+                    });
                 }
-            });
-        }
 
-        // alavasen kulma
-        if (number == 2) {
-            ballShape1.setX(0);
-            ballShape1.setY(height - ballShape1.getHeight());
-        }
+                if (level == 2) {
+                    double random = Math.floor(Math.random()*4);
+                    if (random == 1) {
+                        // alavasen kulma
+                        ball.setX(width/4 - ball.getWidth()/2);
+                        ball.setY(height*3/4 - ball.getHeight()/2);
+                    }
+                    if (random == 2) {
+                        // ylävasen kulma
+                        ball.setX(width/4 - ball.getWidth()/2);
+                        ball.setY(height/4 - ball.getHeight()/2);
+                    }
+                    if (random == 3) {
+                        // yläoikea kulma
+                        ball.setX(width*3/4 - ball.getWidth()/2);
+                        ball.setY(height/4 - ball.getHeight()/2);
+                    }
+                    if (random == 4) {
+                        // alaoikea kulma
+                        ball.setX(width*3/4 - ball.getWidth()/2);
+                        ball.setY(height*3/4 - ball.getHeight()/2);
+                    }
+                }
 
-        // ylävasen kulma
-        if (number == 3) {
-            ballShape1.setX(0);
-            ballShape1.setY(0);
-        }
+                // peitetään pallo keskellä näyttöä
+                if (level == 3) {
+                    // siirretään pallo keskelle
+                    ball.setX(width/2 - ball.getWidth()/2);
+                    ball.setY(height/2 - ball.getHeight()/2);
 
-        // yläoikea kulma
-        if (number == 4) {
-            ballShape1.setX(width - ballShape1.getWidth());
-            ballShape1.setY(0);
-        }
+                    // Animoi peitteet
+                    doAnimation(1);
+                }
 
-        // alaoikea kulma
-        if (number == 5) {
-            ballShape1.setX(width - ballShape1.getWidth());
-            ballShape1.setY(height - ballShape1.getHeight());
-        }
+                // 2 peitettä
+                if (level == 4) {
+                    if (newLevel) {
+                        // liikutetaan 1. peite
+                        ball.setX(width/2 - ball.getWidth()/2 - width/4);
+                        ball.setY(height/2 - ball.getHeight()/2);
+                        // liikutetaan 2. peite
+                        empty1.setX(width/2 - ball.getWidth()/2 + width/4);
+                        empty1.setY(height/2 - ball.getHeight()/2);
+                    }
+                    // Arpoo pallon paikan
+                    randomSpot(2);
+                    // Asetetaan transparent kuvio
+                    empty1.setVisibility(View.INVISIBLE);
+                    // Animoi peitteet
+                    doAnimation(2);
+                }
 
-        // peitetään pallo keskellä näyttöä
-        if (number == 6) {
-            // siirretään pallo keskelle
-            ballShape1.setX(width/2 - ballShape1.getWidth()/2);
-            ballShape1.setY(height/2 - ballShape1.getHeight()/2);
+                // 3 peitettä
+                if (level == 5) {
+                    if (newLevel) {
+                        // liikutetaan 1. peite
+                        ball.setX(width/5 - ball.getWidth()/2);
+                        ball.setY(height/2 - ball.getHeight()/2);
+                        // liikutetaan 2. peite
+                        empty1.setX(width/2 - ball.getWidth()/2);
+                        empty1.setY(height/2 - ball.getHeight()/2);
+                        // liikutetaan 3. peite
+                        empty2.setX(width*4/5 - ball.getWidth()/2);
+                        empty2.setY(height/2 - ball.getHeight()/2);
+                    }
+                    // Arpoo pallon paikan
+                    randomSpot(3);
+                    // Asetetaan transparent kuvio
+                    empty2.setVisibility(View.INVISIBLE);
+                    // Animoi peitteet
+                    doAnimation(3);
+                }
 
-            // Animoi peitteet
-            doTransition(1);
-        }
-
-        // 2 peitettä
-        if (number >= 7 && number <= 11) { // 7-11
-            if (number == 7) {
-                // lisätään 2. peite
-                mainActivity.addView(ballShape2);
-
-                // liikutetaan 1. peite
-                ballShape1.setX(width/2 - ballShape1.getWidth()/2 - width/4);
-                ballShape1.setY(height/2 - ballShape1.getHeight()/2);
-                // liikutetaan 2. peite
-                ballShape2.setX(width/2 - ballShape1.getWidth()/2 + width/4);
-                ballShape2.setY(height/2 - ballShape1.getHeight()/2);
+                // 4 peitettä
+                if (level >= 6) {
+                    if (newLevel) {
+                        // liikutetaan 1. peite
+                        ball.setX(width/4 - ball.getWidth()/2);
+                        ball.setY(height/4 - ball.getHeight()/2);
+                        // liikutetaan 2. peite
+                        empty1.setX(width*3/4 - ball.getWidth()/2);
+                        empty1.setY(height/4 - ball.getHeight()/2);
+                        // liikutetaan 3. peite
+                        empty2.setX(width/4 - ball.getWidth()/2);
+                        empty2.setY(height*3/4 - ball.getHeight()/2);
+                        // liikutetaan 4. peite
+                        empty3.setX(width*3/4 - ball.getWidth()/2);
+                        empty3.setY(height*3/4 - ball.getHeight()/2);
+                    }
+                    // Arpoo pallon paikan
+                    randomSpot(4);
+                    // Asetetaan transparent kuvio
+                    empty3.setVisibility(View.INVISIBLE);
+                    // Animoi peitteet
+                    doAnimation(4);
+                }
+                newLevel = false;
+                Toast.makeText(MainActivity.this, "level = " + level + "\n" + levelCorrectTouches + " / " + levelAllTouches + "\n" + correctTouches + " / " + allTouches, Toast.LENGTH_SHORT).show();
             }
-            // Arpoo pallon paikan
-            randomSpot(2);
-            // Asetetaan transparent kuvio
-            ballShape2.setBackgroundResource(R.drawable.transparent);
-            // Animoi peitteet
-            doTransition(2);
-        }
-
-        // 3 peitettä
-        if (number >= 12 && number <= 16) { // 12-16
-            if (number == 12) {
-                // lisätään 3. peite
-                mainActivity.addView(ballShape3);
-
-                // liikutetaan 1. peite
-                ballShape1.setX(width/4 - ballShape1.getWidth()/2);
-                ballShape1.setY(height/2 - ballShape1.getHeight()/2);
-                // liikutetaan 2. peite
-                ballShape2.setX(width/2 - ballShape1.getWidth()/2);
-                ballShape2.setY(height/2 - ballShape1.getHeight()/2);
-                // liikutetaan 3. peite
-                ballShape3.setX(width*3/4 - ballShape1.getWidth()/2);
-                ballShape3.setY(height/2 - ballShape1.getHeight()/2);
-            }
-            // Arpoo pallon paikan
-            randomSpot(3);
-            // Asetetaan transparent kuvio
-            ballShape3.setBackgroundResource(R.drawable.transparent);
-            // Animoi peitteet
-            doTransition(3);
-        }
-
-        // 4 peitettä
-        if (number >= 17 && number <= 21) { // 17-21
-            if (number == 17) {
-                // lisätään 4. peite
-                mainActivity.addView(ballShape4);
-
-                // liikutetaan 1. peite
-                ballShape1.setX(width*1/4 - ballShape1.getWidth()/2);
-                ballShape1.setY(height*1/4 - ballShape1.getHeight()/2);
-                // liikutetaan 2. peite
-                ballShape2.setX(width*3/4 - ballShape1.getWidth()/2);
-                ballShape2.setY(height*1/4 - ballShape1.getHeight()/2);
-                // liikutetaan 3. peite
-                ballShape3.setX(width*1/4 - ballShape1.getWidth()/2);
-                ballShape3.setY(height*3/4 - ballShape1.getHeight()/2);
-                // liikutetaan 4. peite
-                ballShape4.setX(width*3/4 - ballShape1.getWidth()/2);
-                ballShape4.setY(height*3/4 - ballShape1.getHeight()/2);
-            }
-            // Arpoo pallon paikan
-            randomSpot(4);
-            // Asetetaan transparent kuvio
-            ballShape4.setBackgroundResource(R.drawable.transparent);
-            // Animoi peitteet
-            doTransition(4);
-        }
-
-        // 5 peitettä
-        if (number >= 22 && number <= 26) { // 22-26
-            if (number == 22) {
-                // lisätään 5. peite
-                mainActivity.addView(ballShape5);
-
-                // liikutetaan 1. peite
-                ballShape1.setX(width/4 - ballShape1.getWidth()/2);
-                ballShape1.setY(height/4 - ballShape1.getHeight()/2);
-                // liikutetaan 2. peite
-                ballShape2.setX(width*3/4 - ballShape1.getWidth()/2);
-                ballShape2.setY(height/4 - ballShape1.getHeight()/2);
-                // liikutetaan 3. peite
-                ballShape3.setX(width/4 - ballShape1.getWidth()/2);
-                ballShape3.setY(height*3/4 - ballShape1.getHeight()/2);
-                // liikutetaan 4. peite
-                ballShape4.setX(width*3/4 - ballShape1.getWidth()/2);
-                ballShape4.setY(height*3/4 - ballShape1.getHeight()/2);
-                // liikutetaan 5. peite
-                ballShape5.setX(width/2 - ballShape1.getWidth()/2);
-                ballShape5.setY(height/2 - ballShape1.getHeight()/2);
-            }
-            // Arpoo pallon paikan
-            randomSpot(5);
-            // Asetetaan transparent kuvio
-            ballShape5.setBackgroundResource(R.drawable.transparent);
-            // Animoi peitteet
-            doTransition(5);
-        }
-
-        // 6 peitettä
-        if (number >= 27 /*&& number <= 31*/) { // 27-31
-            if (number == 27) {
-                // lisätään 6. peite
-                mainActivity.addView(ballShape6);
-
-                // liikutetaan 1. peite
-                ballShape1.setX(width/4 - ballShape1.getWidth()/2);
-                ballShape1.setY(height/4 - ballShape1.getHeight()/2);
-                // liikutetaan 2. peite
-                ballShape2.setX(width/2 - ballShape1.getWidth()/2);
-                ballShape2.setY(height/4 - ballShape1.getHeight()/2);
-                // liikutetaan 3. peite
-                ballShape3.setX(width*3/4 - ballShape1.getWidth()/2);
-                ballShape3.setY(height/4 - ballShape1.getHeight()/2);
-                // liikutetaan 4. peite
-                ballShape4.setX(width/4 - ballShape1.getWidth()/2);
-                ballShape4.setY(height*3/4 - ballShape1.getHeight()/2);
-                // liikutetaan 5. peite
-                ballShape5.setX(width/2 - ballShape1.getWidth()/2);
-                ballShape5.setY(height*3/4 - ballShape1.getHeight()/2);
-                // liikutetaan 6. peite
-                ballShape6.setX(width*3/4 - ballShape1.getWidth()/2);
-                ballShape6.setY(height*3/4 - ballShape1.getHeight()/2);
-            }
-            // Arpoo pallon paikan
-            randomSpot(6);
-            // Asetetaan transparent kuvio
-            ballShape6.setBackgroundResource(R.drawable.transparent);
-            // Animoi peitteet
-            doTransition(6);
-        }
-
-        // Kosketuslaskuri
-        number++;
-        //numberOfTouches.setText("" + number);
+        }, ballHiddenTime);
     }
 
     // Arpoo pallon paikan, n = paikkojen lkm
     public void randomSpot(int n) {
         double random = Math.floor(Math.random()*n);
-        float x1 = ballShape1.getX();
-        float y1 = ballShape1.getY();
+        float x1 = ball.getX();
+        float y1 = ball.getY();
         if (random == 1) {
-            ballShape1.setX(ballShape2.getX());
-            ballShape1.setY(ballShape2.getY());
-            ballShape2.setX(x1);
-            ballShape2.setY(y1);
+            ball.setX(empty1.getX());
+            ball.setY(empty1.getY());
+            empty1.setX(x1);
+            empty1.setY(y1);
         }
         if (random == 2) {
-            ballShape1.setX(ballShape3.getX());
-            ballShape1.setY(ballShape3.getY());
-            ballShape3.setX(x1);
-            ballShape3.setY(y1);
+            ball.setX(empty2.getX());
+            ball.setY(empty2.getY());
+            empty2.setX(x1);
+            empty2.setY(y1);
         }
         if (random == 3) {
-            ballShape1.setX(ballShape4.getX());
-            ballShape1.setY(ballShape4.getY());
-            ballShape4.setX(x1);
-            ballShape4.setY(y1);
-        }
-        if (random == 4) {
-            ballShape1.setX(ballShape5.getX());
-            ballShape1.setY(ballShape5.getY());
-            ballShape5.setX(x1);
-            ballShape5.setY(y1);
-        }
-        if (random == 5) {
-            ballShape1.setX(ballShape6.getX());
-            ballShape1.setY(ballShape6.getY());
-            ballShape6.setX(x1);
-            ballShape6.setY(y1);
+            ball.setX(empty3.getX());
+            ball.setY(empty3.getY());
+            empty3.setX(x1);
+            empty3.setY(y1);
         }
     }
 
     // Animoi peitteen pallon ja tyhjien tilalle, n = paikkojen lkm
-    public void doTransition(int m) {
-        final int n = m;
-
-        // asetetaan pallon ja tyhjien kuviot
-        if (n >= 1)
-            ballShape1.setBackgroundResource(ballBackground);
-        if (n >= 2)
-            ballShape2.setBackgroundResource(R.drawable.transparent);
-        if (n >= 3)
-            ballShape3.setBackgroundResource(R.drawable.transparent);
-        if (n >= 4)
-            ballShape4.setBackgroundResource(R.drawable.transparent);
-        if (n >= 5)
-            ballShape5.setBackgroundResource(R.drawable.transparent);
-        if (n >= 6)
-            ballShape6.setBackgroundResource(R.drawable.transparent);
-
-        // katko pallon kosketuksen tunnistukseen kunnes pallo on peitetty
-        ballShape1.setEnabled(false);
+    public void doAnimation(final int n) {
+        // katko näytön kosketuksen tunnistukseen kunnes pallo on peitetty
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         Handler touchHandler = new android.os.Handler();
         touchHandler.postDelayed(new Runnable() {
             public void run() {
-                ballShape1.setEnabled(true);
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             }
-        }, ballVisibleTime + transitionLength);
+        }, ballVisibleTime + animationLength);
 
         // Pallo näkyy ballVisibleTime ajan, jonka jälkeen se peitetään
-        // peiteanimaatio kestää transitionLength ajan
+        // peiteanimaatio kestää animationLength ajan
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             // tämä suoritetaan viiveen ballVisibleTime jälkeen
             public void run() {
+                // peiteanimaatiot
+                // pallon peittäminen
                 if (n >= 1) {
-                    ballShape1.setBackgroundResource(ballToSquare);
-                    TransitionDrawable transition = (TransitionDrawable) ballShape1.getBackground();
-                    transition.startTransition(transitionLength);
+                    movingCover1.setX(ball.getX());
+                    movingCover1.setY(-ball.getHeight());
+                    movingCover1.setVisibility(View.VISIBLE);
+                    movingCover1.animate().x(ball.getX()).y(ball.getY()).setDuration(animationLength).start();
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        // tämä suoritetaan viiveen animationLength jälkeen
+                        public void run() {
+                            ball.setBackgroundResource(squareBackground);
+                            movingCover1.setVisibility(View.INVISIBLE);
+                        }
+                    }, animationLength);
                 }
+                // 2. paikan peittäminen
                 if (n >= 2) {
-                    ballShape2.setBackgroundResource(transpToSquare);
-                    TransitionDrawable transition2 = (TransitionDrawable) ballShape2.getBackground();
-                    transition2.startTransition(transitionLength);
+                    movingCover2.setX(empty1.getX());
+                    movingCover2.setY(-ball.getHeight());
+                    movingCover2.setVisibility(View.VISIBLE);
+                    movingCover2.animate().x(empty1.getX()).y(empty1.getY()).setDuration(animationLength).start();
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        // tämä suoritetaan viiveen animationLength jälkeen
+                        public void run() {
+                            empty1.setVisibility(View.VISIBLE);
+                            movingCover2.setVisibility(View.INVISIBLE);
+                        }
+                    }, animationLength);
                 }
+                // 3. paikan peittäminen
                 if (n >= 3) {
-                    ballShape3.setBackgroundResource(transpToSquare);
-                    TransitionDrawable transition3 = (TransitionDrawable) ballShape3.getBackground();
-                    transition3.startTransition(transitionLength);
+                    movingCover3.setX(empty2.getX());
+                    movingCover3.setY(-ball.getHeight());
+                    movingCover3.setVisibility(View.VISIBLE);
+                    movingCover3.animate().x(empty2.getX()).y(empty2.getY()).setDuration(animationLength).start();
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        // tämä suoritetaan viiveen animationLength jälkeen
+                        public void run() {
+                            empty2.setVisibility(View.VISIBLE);
+                            movingCover3.setVisibility(View.INVISIBLE);
+                        }
+                    }, animationLength);
                 }
+                // 4. paikan peittäminen
                 if (n >= 4) {
-                    ballShape4.setBackgroundResource(transpToSquare);
-                    TransitionDrawable transition4 = (TransitionDrawable) ballShape4.getBackground();
-                    transition4.startTransition(transitionLength);
-                }
-                if (n >= 5) {
-                    ballShape5.setBackgroundResource(transpToSquare);
-                    TransitionDrawable transition5 = (TransitionDrawable) ballShape5.getBackground();
-                    transition5.startTransition(transitionLength);
-                }
-                if (n >= 6) {
-                    ballShape6.setBackgroundResource(transpToSquare);
-                    TransitionDrawable transition6 = (TransitionDrawable) ballShape6.getBackground();
-                    transition6.startTransition(transitionLength);
+                    movingCover4.setX(empty3.getX());
+                    movingCover4.setY(-ball.getHeight());
+                    movingCover4.setVisibility(View.VISIBLE);
+                    movingCover4.animate().x(empty3.getX()).y(empty3.getY()).setDuration(animationLength).start();
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        // tämä suoritetaan viiveen animationLength jälkeen
+                        public void run() {
+                            empty3.setVisibility(View.VISIBLE);
+                            movingCover4.setVisibility(View.INVISIBLE);
+                        }
+                    }, animationLength);
                 }
             }
         }, ballVisibleTime);
@@ -492,25 +513,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void gameOver() {
         // poistetaan kaikki elementit näkyvistä
-        if (ballShape1 != null)
-            ballShape1.setVisibility(View.GONE);
-        if (ballShape2 != null)
-            ballShape2.setVisibility(View.GONE);
-        if (ballShape3 != null)
-            ballShape3.setVisibility(View.GONE);
-        if (ballShape4 != null)
-            ballShape4.setVisibility(View.GONE);
-        if (ballShape5 != null)
-            ballShape5.setVisibility(View.GONE);
-        if (ballShape6 != null)
-            ballShape6.setVisibility(View.GONE);
-        if (numberOfTouches != null)
-            numberOfTouches.setVisibility(View.GONE);
+        movingCover1.setVisibility(View.GONE);
+        movingCover2.setVisibility(View.GONE);
+        movingCover3.setVisibility(View.GONE);
+        movingCover4.setVisibility(View.GONE);
+        ball.setVisibility(View.GONE);
+        empty1.setVisibility(View.GONE);
+        empty2.setVisibility(View.GONE);
+        empty3.setVisibility(View.GONE);
+        countdown.setVisibility(View.GONE);
 
         // näytetään tulokset
         TextView results = new TextView(this);
-        float prosentti = (float)number/allTouches*100;
-        results.setText("Oikein: " + number + "/" + allTouches + ", " + (int)prosentti + "%");
+        float prosentti = (float) correctTouches /allTouches*100;
+        results.setText("Oikein: " + correctTouches + "/" + allTouches + ", " + (int)prosentti + "%");
         results.setTextSize(30);
         results.measure(0,0);
         results.setX(width/2 - results.getMeasuredWidth()/2);
@@ -549,69 +565,37 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Aloittaa uuden pelin
-    public void restartGame() {
-        this.recreate();
-    }
-
     // Asettaa kuvioiden värit
     public void setColors() {
 
-        // ballShape1 eli pallon väri
+        // ball eli pallon väri
         if (ballColor.equalsIgnoreCase(RED)) {
             ballBackground = R.drawable.ball_shape_red;
         }
         if (ballColor.equalsIgnoreCase(BLUE)) {
             ballBackground = R.drawable.ball_shape_blue;
         }
-        if (ballColor.equalsIgnoreCase(GREEN)) {
-            ballBackground = R.drawable.ball_shape_green;
+        if (ballColor.equalsIgnoreCase(BLACK)) {
+            ballBackground = R.drawable.ball_shape_black;
         }
-        ballShape1.setBackgroundResource(ballBackground);
+        ball.setBackgroundResource(ballBackground);
 
-        //Drawable ballDrawable = this.getResources().getDrawable(R.drawable.ball_shape_red);
-        //Drawable bg = ballShape1.getBackground();
-        //bg.setColorFilter(Color.parseColor(ballColor), PorterDuff.Mode.SRC_ATOP);
-        //if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-        //    ballShape1.setBackgroundDrawable(bg);
-        //}
-        //else {
-        //    ballShape1.setBackground(bg);
-        //}
-
-        // tyhjä --> neliö animaatioissa olevien neliöiden väri
-        if (squareColor.equalsIgnoreCase(RED))
-            transpToSquare = R.drawable.transp_to_square_red;
-        if (squareColor.equalsIgnoreCase(BLUE))
-            transpToSquare = R.drawable.transp_to_square_blue;
-        if (squareColor.equalsIgnoreCase(GREEN))
-            transpToSquare = R.drawable.transp_to_square_green;
-
-        // pallo --> neliö animaatioissa olevien pallojen ja neliöiden värit
-        if (ballColor.equalsIgnoreCase(RED)) {
-            if (squareColor.equalsIgnoreCase(RED))
-                //ballToSquare = this.getResources().getDrawable(R.drawable.ball_red_to_square_red);
-                ballToSquare = R.drawable.ball_red_to_square_red;
-            if (squareColor.equalsIgnoreCase(BLUE))
-                ballToSquare = R.drawable.ball_red_to_square_blue;
-            if (squareColor.equalsIgnoreCase(GREEN))
-                ballToSquare = R.drawable.ball_red_to_square_green;
+        // empty1-3 eli peitteen väri
+        if (squareColor.equalsIgnoreCase(RED)) {
+            squareBackground = R.drawable.square_shape_red;
         }
-        if (ballColor.equalsIgnoreCase(BLUE)) {
-            if (squareColor.equalsIgnoreCase(RED))
-                ballToSquare = R.drawable.ball_blue_to_square_red;
-            if (squareColor.equalsIgnoreCase(BLUE))
-                ballToSquare = R.drawable.ball_blue_to_square_blue;
-            if (squareColor.equalsIgnoreCase(GREEN))
-                ballToSquare = R.drawable.ball_blue_to_square_green;
+        if (squareColor.equalsIgnoreCase(BLUE)) {
+            squareBackground = R.drawable.square_shape_blue;
         }
-        if (ballColor.equalsIgnoreCase(GREEN)) {
-            if (squareColor.equalsIgnoreCase(RED))
-                ballToSquare = R.drawable.ball_green_to_square_red;
-            if (squareColor.equalsIgnoreCase(BLUE))
-                ballToSquare = R.drawable.ball_green_to_square_blue;
-            if (squareColor.equalsIgnoreCase(GREEN))
-                ballToSquare = R.drawable.ball_green_to_square_green;
+        if (squareColor.equalsIgnoreCase(BLACK)) {
+            squareBackground = R.drawable.square_shape_black;
         }
+        empty1.setBackgroundResource(squareBackground);
+        empty2.setBackgroundResource(squareBackground);
+        empty3.setBackgroundResource(squareBackground);
+        movingCover1.setBackgroundResource(squareBackground);
+        movingCover2.setBackgroundResource(squareBackground);
+        movingCover3.setBackgroundResource(squareBackground);
+        movingCover4.setBackgroundResource(squareBackground);
     }
 }

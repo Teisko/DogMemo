@@ -6,12 +6,12 @@
     <string-array name="ball_color_list_titles">
         <item>Punainen</item>
         <item>Sininen</item>
-        <item>Vihreä</item>
+        <item>Musta</item>
     </string-array>
     <string-array name="ball_color_list_values">
         <item>#ff0000</item>
         <item>#0000FF</item>
-        <item>#00FF00</item>
+        <item>#000000</item>
     </string-array>
 
     <!-- Peitteen väri -->
@@ -19,12 +19,12 @@
     <string-array name="square_color_list_titles">
         <item>Punainen</item>
         <item>Sininen</item>
-        <item>Vihreä</item>
+        <item>Musta</item>
     </string-array>
     <string-array name="square_color_list_values">
         <item>#ff0000</item>
         <item>#0000FF</item>
-        <item>#00FF00</item>
+        <item>#000000</item>
     </string-array>
 
     <!-- Peliaika -->
@@ -40,6 +40,33 @@
         <item>60</item>
         <item>300</item>
         <item>600</item>
+    </string-array>
+
+    <!-- Pallon piilossaoloaika oikean painalluksen jälkeen -->
+    <string name="ball_hidden_time_title">Pallon piilossaoloaika oikean painalluksen jälkeen</string>
+    <string-array name="ball_hidden_time_list_titles">
+        <item>1 s</item>
+        <item>2 s</item>
+        <item>3 s</item>
+        <item>4 s</item>
+        <item>5 s</item>
+        <item>6 s</item>
+        <item>7 s</item>
+        <item>8 s</item>
+        <item>9 s</item>
+        <item>10 s</item>
+    </string-array>
+    <string-array name="ball_hidden_time_list_values">
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>5000</item>
+        <item>6000</item>
+        <item>7000</item>
+        <item>8000</item>
+        <item>9000</item>
+        <item>10000</item>
     </string-array>
 
     <!-- Pallon näkyvissäoloaika ennen peiteanimaation alkua -->
@@ -94,6 +121,31 @@
         <item>8000</item>
         <item>9000</item>
         <item>10000</item>
+    </string-array>
+
+    <!-- Tason muuttumiseen vaadittava piste-ero -->
+    <string name="level_points_title">Tason muuttumiseen vaadittava piste-ero</string>
+    <string-array name="level_points_list_titles">
+        <item>+- 2</item>
+        <item>+- 3</item>
+        <item>+- 4</item>
+        <item>+- 5</item>
+        <item>+- 6</item>
+        <item>+- 7</item>
+        <item>+- 8</item>
+        <item>+- 9</item>
+        <item>+- 10</item>
+    </string-array>
+    <string-array name="level_points_list_values">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
     </string-array>
 
     <!-- Valmiita esimerkkitekstejä -->

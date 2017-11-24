@@ -199,8 +199,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("square_color_list"));
             bindPreferenceSummaryToValue(findPreference("ball_color_list"));
             bindPreferenceSummaryToValue(findPreference("gametime_list"));
+            bindPreferenceSummaryToValue(findPreference("ball_hidden_time_list"));
             bindPreferenceSummaryToValue(findPreference("ball_visible_time_list"));
             bindPreferenceSummaryToValue(findPreference("cover_animation_time_list"));
+            bindPreferenceSummaryToValue(findPreference("level_points_list"));
         }
 
         @Override

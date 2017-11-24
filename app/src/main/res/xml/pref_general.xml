@@ -26,7 +26,7 @@
     <!-- Pallon värin valitsin -->
     <ListPreference
         android:id="@+id/ball_color_chooser"
-        android:defaultValue="#ff0000"
+        android:defaultValue="#0000FF"
         android:entries="@array/ball_color_list_titles"
         android:entryValues="@array/ball_color_list_values"
         android:key="ball_color_list"
@@ -38,7 +38,7 @@
     <!-- Peitteen värin valitsin -->
     <ListPreference
         android:id="@+id/square_color_chooser"
-        android:defaultValue="#0000FF"
+        android:defaultValue="#000000"
         android:entries="@array/square_color_list_titles"
         android:entryValues="@array/square_color_list_values"
         android:key="square_color_list"
@@ -56,6 +56,17 @@
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:title="@string/gametime_title" />
+
+    <!-- Pallon piilossaoloajan valitsin -->
+    <ListPreference
+        android:id="@+id/ball_hidden_time_chooser"
+        android:defaultValue="2000"
+        android:entries="@array/ball_hidden_time_list_titles"
+        android:entryValues="@array/ball_hidden_time_list_values"
+        android:key="ball_hidden_time_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/ball_hidden_time_title" />
 
     <!-- Pallon näkyvissäoloajan ennen peiteanimaation alkua valitsin -->
     <ListPreference
@@ -78,5 +89,16 @@
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:title="@string/cover_animation_time_title" />
+
+    <!-- Tason muuttumiseen vaadittava piste-ero -->
+    <ListPreference
+        android:id="@+id/level_points_chooser"
+        android:defaultValue="5"
+        android:entries="@array/level_points_list_titles"
+        android:entryValues="@array/level_points_list_values"
+        android:key="level_points_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/level_points_title" />
 
 </PreferenceScreen>
