@@ -5,13 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 public class NewGame extends AppCompatActivity {
 
@@ -35,7 +33,7 @@ public class NewGame extends AppCompatActivity {
         button_addPlayer = (Button)findViewById(R.id.button_addPlayer);
 
         radio_normaali = (RadioButton)findViewById(R.id.radio_normaali);
-        radio_valinnainen = (RadioButton)findViewById(R.id.radio_valinnainen);
+        radio_valinnainen = (RadioButton)findViewById(R.id.radio_harjoittelu);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
         button_addPlayer.setOnClickListener(new View.OnClickListener() {

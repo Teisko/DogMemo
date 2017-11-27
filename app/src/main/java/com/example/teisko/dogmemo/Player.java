@@ -19,15 +19,15 @@ public class Player {
     /* Constructors */
 
     /** Constructor for class Player */
-    public Player(String d, String o, String r, Date syntyma, int p, int k, boolean sp) throws
+    public Player(String d, String o, String r, Date syntyma, boolean sp) throws
             IllegalArgumentException
     {
         dogName(d);
         ownerName(o);
         rotu(r);
         syntymapaiva(syntyma);
-        pisteet(p);
-        korkeinTaso(k);
+        pisteet(0);
+        korkeinTaso(0);
         sukupuoli(sp);
     }
 
