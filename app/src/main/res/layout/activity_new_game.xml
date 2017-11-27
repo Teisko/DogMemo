@@ -26,14 +26,14 @@
             android:layout_weight="1"
             android:text="@string/radio_normaali"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/radio_valinnainen"
+            app:layout_constraintEnd_toStartOf="@+id/radio_harjoittelu"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/text_taso"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dogList" />
 
         <RadioButton
-            android:id="@+id/radio_valinnainen"
+            android:id="@+id/radio_harjoittelu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
