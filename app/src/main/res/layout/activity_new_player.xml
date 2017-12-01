@@ -13,37 +13,37 @@
         android:layout_width="wrap_content"
         android:layout_height="62dp"
         android:text="Täytä uuden pelaajan tiedot"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/edit_koira"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edit_koira"
         android:layout_width="wrap_content"
         android:layout_height="62dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        android:text="Koiran nimi"
+        app:layout_constraintBottom_toTopOf="@+id/edit_omistaja"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taytaTiedot" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/edit_rotu"
         android:layout_width="wrap_content"
         android:layout_height="62dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editText4"
+        android:text="Rotu"
+        app:layout_constraintBottom_toTopOf="@+id/edit_syntyma"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_omistaja" />
 
     <Button
         android:id="@+id/button_save"
@@ -74,8 +74,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/pelaajanNimi"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintEnd_toStartOf="@+id/edit_koira"
+        app:layout_constraintTop_toTopOf="@+id/edit_koira" />
 
     <TextView
         android:id="@+id/textView4"
@@ -83,8 +83,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/rotu"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toTopOf="@+id/editText2" />
+        app:layout_constraintEnd_toStartOf="@+id/edit_rotu"
+        app:layout_constraintTop_toTopOf="@+id/edit_rotu" />
 
     <TextView
         android:id="@+id/textView5"
@@ -92,11 +92,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/syntyma"
-        app:layout_constraintEnd_toStartOf="@+id/editText4"
-        app:layout_constraintTop_toTopOf="@+id/editText4" />
+        app:layout_constraintEnd_toStartOf="@+id/edit_syntyma"
+        app:layout_constraintTop_toTopOf="@+id/edit_syntyma" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/edit_syntyma"
         android:layout_width="wrap_content"
         android:layout_height="62dp"
         android:ems="10"
@@ -105,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_rotu" />
 
     <TextView
         android:id="@+id/textView"
@@ -113,21 +113,21 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/omistajanNimi"
-        app:layout_constraintEnd_toStartOf="@+id/editText3"
-        app:layout_constraintTop_toTopOf="@+id/editText3" />
+        app:layout_constraintEnd_toStartOf="@+id/edit_omistaja"
+        app:layout_constraintTop_toTopOf="@+id/edit_omistaja" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/edit_omistaja"
         android:layout_width="wrap_content"
         android:layout_height="62dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
+        app:layout_constraintBottom_toTopOf="@+id/edit_rotu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_koira" />
 
     <RadioGroup
         android:id="@+id/rg_sukupuoli"
@@ -137,7 +137,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4">
+        app:layout_constraintTop_toBottomOf="@+id/edit_syntyma">
 
         <RadioButton
             android:id="@+id/rb_narttu"

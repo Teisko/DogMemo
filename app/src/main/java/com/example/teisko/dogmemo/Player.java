@@ -1,5 +1,6 @@
 package com.example.teisko.dogmemo;
 
+
 import java.util.Date;
 
 /**
@@ -14,12 +15,12 @@ public class Player {
     private Date syntymapaiva;
     private int pisteet;
     private int korkeinTaso;
-    private boolean sukupuoli;
+    private int sukupuoli; // 0 = narttu, 1 = uros
 
     /* Constructors */
 
     /** Constructor for class Player */
-    public Player(String d, String o, String r, Date syntyma, boolean sp) throws
+    public Player(String d, String o, String r, Date syntyma, int sp) throws
             IllegalArgumentException
     {
         dogName(d);
@@ -62,7 +63,7 @@ public class Player {
         korkeinTaso = k;
     }
 
-    private void sukupuoli(boolean sp)
+    private void sukupuoli(int sp)
     {
         sukupuoli = sp;
     }
@@ -98,7 +99,7 @@ public class Player {
         return korkeinTaso;
     }
 
-    public boolean sukupuoli()
+    public int sukupuoli()
     {
         return sukupuoli;
     }
