@@ -146,6 +146,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     private void setupActionBar() {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
+            actionBar.setDisplayShowHomeEnabled(true);
             // Show the Up button in the action bar.
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -203,6 +204,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("ball_visible_time_list"));
             bindPreferenceSummaryToValue(findPreference("cover_animation_time_list"));
             bindPreferenceSummaryToValue(findPreference("level_points_list"));
+            bindPreferenceSummaryToValue(findPreference("correct_sound_list"));
         }
 
         @Override

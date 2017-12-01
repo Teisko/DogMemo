@@ -148,6 +148,25 @@
         <item>10</item>
     </string-array>
 
+    <!-- Kannustinääni -->
+    <string name="correct_sound_title">Kannustinääni</string>
+    <string-array name="correct_sound_list_titles">
+        <item>ei ääntä</item>
+        <item>naksutin 1</item>
+        <item>naksutin 2</item>
+        <item>rapina</item>
+        <item>good boy</item>
+        <item>good girl</item>
+    </string-array>
+    <string-array name="correct_sound_list_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
     <!-- Valmiita esimerkkitekstejä -->
 
     <string name="app_name">DogMemo</string>

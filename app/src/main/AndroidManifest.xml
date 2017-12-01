@@ -18,11 +18,12 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".PracticeActivity" />
+        <activity android:name=".GameEndActivity"></activity>
     </application>
 
 </manifest>
