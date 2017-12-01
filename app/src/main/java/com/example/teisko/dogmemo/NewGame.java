@@ -47,7 +47,17 @@ public class NewGame extends AppCompatActivity {
         button_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent avaus = new Intent(v.getContext(), MainActivity.class);
+                int peli = -1;
+                if(radioGroup.getCheckedRadioButtonId()!=-1){
+                    peli = radioGroup.getCheckedRadioButtonId();
+                }
+                if(peli == 0) {
+                    Intent avaus = new Intent(v.getContext(), MainActivity.class);
+                }
+                if(peli == 1)
+                {
+                    Intent avaus = new Intent(v.getContext(), PracticeActivity.class);
+                }
                 startActivity(avaus);
             }
         });
