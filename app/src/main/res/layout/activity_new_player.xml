@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.teisko.dogmemo.NewPlayer"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
+
+    <TextView
+        android:id="@+id/taytaTiedot"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:text="Täytä uuden pelaajan tiedot"
+        app:layout_constraintBottom_toTopOf="@+id/edit_koira"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+
+    <EditText
+        android:id="@+id/edit_koira"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Koiran nimi"
+        app:layout_constraintBottom_toTopOf="@+id/edit_omistaja"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taytaTiedot" />
+
+    <EditText
+        android:id="@+id/edit_rotu"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Rotu"
+        app:layout_constraintBottom_toTopOf="@+id/edit_syntyma"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_omistaja" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:text="@string/tallenna"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_sukupuoli" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:text="DogMemo"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/taytaTiedot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textNimi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/pelaajanNimi"
+        app:layout_constraintEnd_toStartOf="@+id/edit_koira"
+        app:layout_constraintTop_toTopOf="@+id/edit_koira" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/rotu"
+        app:layout_constraintEnd_toStartOf="@+id/edit_rotu"
+        app:layout_constraintTop_toTopOf="@+id/edit_rotu" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/syntyma"
+        app:layout_constraintEnd_toStartOf="@+id/edit_syntyma"
+        app:layout_constraintTop_toTopOf="@+id/edit_syntyma" />
+
+    <EditText
+        android:id="@+id/edit_syntyma"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/rg_sukupuoli"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_rotu" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/omistajanNimi"
+        app:layout_constraintEnd_toStartOf="@+id/edit_omistaja"
+        app:layout_constraintTop_toTopOf="@+id/edit_omistaja" />
+
+    <EditText
+        android:id="@+id/edit_omistaja"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/edit_rotu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_koira" />
+
+    <RadioGroup
+        android:id="@+id/rg_sukupuoli"
+        android:layout_width="88dp"
+        android:layout_height="62dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_syntyma">
+
+        <RadioButton
+            android:id="@+id/rb_narttu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/narttu" />
+
+        <RadioButton
+            android:id="@+id/rb_uros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/uros" />
+    </RadioGroup>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/sukupuoli"
+        app:layout_constraintEnd_toStartOf="@+id/rg_sukupuoli"
+        app:layout_constraintTop_toTopOf="@+id/rg_sukupuoli" />
+</android.support.constraint.ConstraintLayout>

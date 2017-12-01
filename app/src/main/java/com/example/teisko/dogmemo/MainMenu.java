@@ -10,17 +10,20 @@ import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
 
-    public Button button_uusi;
-    public Button button_asetukset;
-    public Button button_tilastot;
+    Button button_uusi;
+    Button button_asetukset;
+    Button button_tilastot;
 
-    public void init()
-    {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_menu);
+
         button_uusi = (Button)findViewById(R.id.button_uusi);
         button_uusi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent avaus = new Intent(MainMenu.this, MainActivity.class);
+                Intent avaus = new Intent(v.getContext(), NewGame.class);
                 startActivity(avaus);
             }
         });
