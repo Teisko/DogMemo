@@ -52,7 +52,7 @@ public class NewGame extends AppCompatActivity {
                 Log.d("Debug", "" + peli);
                 Intent avaus = null;
                 if(peli == R.id.radio_normaali)
-                    new Intent(v.getContext(), MainActivity.class);
+                    avaus = new Intent(v.getContext(), MainActivity.class);
                 else
                     avaus = new Intent(v.getContext(), PracticeActivity.class);
                 startActivity(avaus);
