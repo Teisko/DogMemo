@@ -25,6 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".PracticeActivity" />
+        <activity android:name=".GameEndActivity"></activity>            
         <activity android:name=".NewGame" />
         <activity android:name=".NewPlayer"></activity>
     </application>
