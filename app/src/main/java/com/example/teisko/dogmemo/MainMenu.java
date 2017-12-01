@@ -42,12 +42,4 @@ public class MainMenu extends AppCompatActivity {
         button_tilastot = (Button)findViewById(R.id.button_tilastot);
         button_tilastot.setEnabled(false);
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
-
-        init();
-    }
 }

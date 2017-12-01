@@ -46,27 +46,33 @@ public class NewPlayer extends AppCompatActivity {
         });
         rg_sukupuoli = (RadioGroup)findViewById(R.id.rg_sukupuoli);
 
-
-        button_save.setOnClickListener(new View.OnClickListener() {
+        button_save.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick (View v){
 
                 String kNimi = edit_koira.getText().toString();
                 String oNimi = edit_omistaja.getText().toString();
                 String rotu = edit_rotu.getText().toString();
                 String[] ajat = edit_syntyma.getText().toString().split("-");
-                int vuosi = Integer.parseInt(ajat[0]);
+                int vuosi = Integer.parseInt(ajat[2]);
                 int kuukausi = Integer.parseInt(ajat[1]);
-                int paiva = Integer.parseInt(ajat[2]);
+                int paiva = Integer.parseInt(ajat[0]);
                 Date syntyma = new Date(vuosi, kuukausi, paiva);
                 int sukupuoli = -1;
 
-                if(rg_sukupuoli.getCheckedRadioButtonId()!=-1){
+                if (rg_sukupuoli.getCheckedRadioButtonId() != -1) {
                     sukupuoli = rg_sukupuoli.getCheckedRadioButtonId();
                 }
 
                 Player uusi = new Player(kNimi, oNimi, rotu, syntyma, sukupuoli);
+                finish();
             }
         });
+    }
+
+    public void onOk(String value)
+    {
+        edit_syntyma.setText(value);
     }
 }
