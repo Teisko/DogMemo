@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">DogMemo</string>
+    <string name="start_game">Aloita Peli</string>
+    <string name="add_player">Lisää uusi pelaaja</string>
+    <string name="radio_normaali">Normaali peli</string>
+    <string name="radio_valinnainen">Harjoittelupeli</string>
+    <string name="pelaajanNimi">Koiran nimi</string>
+    <string name="omistajanNimi">Omistajan nimi</string>
+    <string name="sukupuoli">Sukupuoli</string>
+    <string name="rotu">Rotu</string>
+    <string name="syntyma">Syntymäpäivä</string>
+    <string name="tallenna">Tallenna pelaajaprofiili</string>
+    <string name="narttu">narttu</string>
+    <string name="uros">uros</string>
 </resources>
