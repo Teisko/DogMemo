@@ -42,6 +42,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/radio_normaali"
             tools:layout_editor_absoluteY="184dp" />
+
     </RadioGroup>
 
     <TextView
