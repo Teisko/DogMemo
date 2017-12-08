@@ -49,7 +49,6 @@ public class NewGame extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int peli = radioGroup.getCheckedRadioButtonId();
-                Log.d("Debug", "" + peli);
                 Intent avaus = null;
                 if(peli == R.id.radio_normaali)
                     avaus = new Intent(v.getContext(), MainActivity.class);
