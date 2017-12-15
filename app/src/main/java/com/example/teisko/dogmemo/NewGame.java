@@ -1,6 +1,7 @@
 package com.example.teisko.dogmemo;
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,9 @@ public class NewGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
+
+        // äänipainikkeet muuttavat mediaääniä
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
         // Yhdistetään attribuutit niitä vastaaviin näyttöolioihin
         button_start = (Button)findViewById(R.id.button_start);

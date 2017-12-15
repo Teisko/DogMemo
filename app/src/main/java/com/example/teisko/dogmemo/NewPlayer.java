@@ -1,6 +1,7 @@
 package com.example.teisko.dogmemo;
 
 import android.app.FragmentTransaction;
+import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,9 @@ public class NewPlayer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_player);
+
+        // äänipainikkeet muuttavat mediaääniä
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
         button_save = (Button)findViewById(R.id.button_save);
         edit_koira = (EditText)findViewById(R.id.edit_koira);
