@@ -5,10 +5,13 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity {
+
+    private final String TAG = "MainMenu";
 
     Button button_uusi;
     Button button_asetukset;

@@ -1,7 +1,6 @@
 package com.example.teisko.dogmemo;
 
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,9 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Calendar;
+import java.io.FileWriter;
 import java.util.Date;
 
 public class NewPlayer extends AppCompatActivity {
@@ -74,15 +73,16 @@ public class NewPlayer extends AppCompatActivity {
                 }
 
                 // Lisätään tiedostoon tiedot uudesta pelaajasta
-                FileOutputStream outputStream;
+                File file = new File(getApplicationContext().getFilesDir(), NewGame.TIEDNIMI);
 
                 Player uusi = new Player(kNimi, oNimi, rotu, syntyma, sukupuoli);
 
-                try {
-                    String rivi = uusi.toString() + "\n";
-                    outputStream = openFileOutput(NewGame.TIEDNIMI, Context.MODE_PRIVATE);
-                    outputStream.write(rivi.getBytes());
-                    outputStream.close();
+                try
+                {
+                    FileWriter fileWriter = new FileWriter(file, true);
+                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                    bufferedWriter.write(uusi.toString() + "\n");
+                    bufferedWriter.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

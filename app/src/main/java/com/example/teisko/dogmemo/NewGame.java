@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -15,12 +16,14 @@ import android.widget.RadioGroup;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Date;
 
 public class NewGame extends AppCompatActivity {
 
     // Vakioita
     public static final String TIEDNIMI = "profiles.txt";
+    private static final String TAG = "NewGame";
 
     /* Attribuutteja
      *
@@ -39,6 +42,18 @@ public class NewGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
+
+        File file = new File(getApplicationContext().getFilesDir(), NewGame.TIEDNIMI);
+
+        try {
+            if(!file.exists()) {
+                file.createNewFile();
+            }
+        }
+        catch(IOException e)
+        {
+            Log.e(TAG, "IOEXCEPTION!!!!!!!!!");
+        }
 
         // Yhdistetään attribuutit niitä vastaaviin näyttöolioihin
         button_start = (Button)findViewById(R.id.button_start);
@@ -106,11 +121,17 @@ public class NewGame extends AppCompatActivity {
 
             sisalto = fileContent.toString();
         } catch (Exception e) {
-            // Luodaan tyhjä pelaajatiedosto ja palautetaan tyhjä lista jos tiedostoa ei löydy
-            File file = new File(getApplicationContext().getFilesDir(), NewGame.TIEDNIMI);
-            dogs = new Player[0];
+            Log.d(TAG, "Exception 1.");
+            finish();
         }
-        String rivit[] = sisalto.split("\n");
+
+        String rivit[];
+        // Jaetaan sisältö taulukoihin, mutta tarkistetaan ensin että sisältö ei ole tyhjä
+        // tai muuten tapahtuu hirvittäviä asioita
+        if(sisalto.length() > 0)
+            rivit = sisalto.split("\n");
+        else
+            rivit = new String[0];
 
         dogs = new Player[rivit.length];
 
@@ -130,7 +151,6 @@ public class NewGame extends AppCompatActivity {
 
             dogs[i] = new Player(tiedot[0], tiedot[1], tiedot[2], syntyma, pisteet, korkeinTaso, sukupuoli);
         }
-        // Päivitetään lopuksi lista koirien nimistä
         lueNimet();
     }
 
@@ -138,9 +158,8 @@ public class NewGame extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         luePelaajat();
-        ListView list = (ListView) findViewById(R.id.listview);
-        ListAdapter adapter = list.getAdapter();
+        ListView list = (ListView) findViewById(R.id.dogList);
+        ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
         list.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
     }
 }
