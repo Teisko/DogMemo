@@ -1,6 +1,8 @@
 package com.example.teisko.dogmemo;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -29,6 +31,19 @@ public class Player {
         syntymapaiva(syntyma);
         pisteet(0);
         korkeinTaso(0);
+        sukupuoli(sp);
+    }
+
+    /** Constructor for creating new Objects from saved file */
+    public Player(String d, String o, String r, Date syntyma, int p, int kt, int sp) throws
+            IllegalArgumentException
+    {
+        dogName(d);
+        ownerName(o);
+        rotu(r);
+        syntymapaiva(syntyma);
+        pisteet(p);
+        korkeinTaso(kt);
         sukupuoli(sp);
     }
 
@@ -102,5 +117,18 @@ public class Player {
     public int sukupuoli()
     {
         return sukupuoli;
+    }
+
+    private String syntymaTeksti()
+    {
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        return df.format(syntymapaiva);
+    }
+
+    /** Perityt metodit */
+    @Override
+    public String toString()
+    {
+        return dogName + "/" + ownerName + "/" + rotu + "/" + syntymaTeksti() + "/" + pisteet + "/" + korkeinTaso + "/" + sukupuoli;
     }
 }

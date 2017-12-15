@@ -1,6 +1,7 @@
 package com.example.teisko.dogmemo;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
-import java.util.Calendar;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Date;
 
 public class NewPlayer extends AppCompatActivity {
@@ -65,11 +68,31 @@ public class NewPlayer extends AppCompatActivity {
                 Date syntyma = new Date(vuosi, kuukausi, paiva);
                 int sukupuoli = -1;
 
-                if (rg_sukupuoli.getCheckedRadioButtonId() != -1) {
-                    sukupuoli = rg_sukupuoli.getCheckedRadioButtonId();
+                int rGId = rg_sukupuoli.getCheckedRadioButtonId();
+                if(rGId != -1) {
+                    if (R.id.rb_narttu == rGId) {
+                        sukupuoli = 0;
+                    } else
+                        sukupuoli = 1;
                 }
 
+                // Lisätään tiedostoon tiedot uudesta pelaajasta
+                File file = new File(getApplicationContext().getFilesDir(), NewGame.TIEDNIMI);
+
                 Player uusi = new Player(kNimi, oNimi, rotu, syntyma, sukupuoli);
+
+                try
+                {
+                    FileWriter fileWriter = new FileWriter(file, true);
+                    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                    bufferedWriter.write(uusi.toString() + "\n");
+                    bufferedWriter.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent output = new Intent();
+                output.putExtra("Avain", 1);
+                setResult(RESULT_OK, output);
                 finish();
             }
         });
