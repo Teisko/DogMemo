@@ -1,6 +1,8 @@
 package com.example.teisko.dogmemo;
 
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -61,11 +65,30 @@ public class NewPlayer extends AppCompatActivity {
                 Date syntyma = new Date(vuosi, kuukausi, paiva);
                 int sukupuoli = -1;
 
-                if (rg_sukupuoli.getCheckedRadioButtonId() != -1) {
-                    sukupuoli = rg_sukupuoli.getCheckedRadioButtonId();
+                int rGId = rg_sukupuoli.getCheckedRadioButtonId();
+                if(rGId != -1) {
+                    if (R.id.rb_narttu == rGId) {
+                        sukupuoli = 0;
+                    } else
+                        sukupuoli = 1;
                 }
 
+                // Lisätään tiedostoon tiedot uudesta pelaajasta
+                FileOutputStream outputStream;
+
                 Player uusi = new Player(kNimi, oNimi, rotu, syntyma, sukupuoli);
+
+                try {
+                    String rivi = uusi.toString() + "\n";
+                    outputStream = openFileOutput(NewGame.TIEDNIMI, Context.MODE_PRIVATE);
+                    outputStream.write(rivi.getBytes());
+                    outputStream.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                Intent output = new Intent();
+                output.putExtra("Avain", 1);
+                setResult(RESULT_OK, output);
                 finish();
             }
         });
