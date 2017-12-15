@@ -6,11 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -20,7 +23,9 @@ import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.OrientationEventListener;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.util.List;
@@ -39,13 +44,17 @@ import static com.example.teisko.dogmemo.R.xml.pref_general;
  * API Guide</a> for more information on developing a Settings UI.
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
+
+    private static Context context;
+    private static long timeOnStart;
+    private static int correctSoundFile;
+    private static MediaPlayer correctSound;
+    private static long timeOnEdit;
+
     /**
      * A preference value change listener that updates the preference's summary
      * to reflect its new value.
      */
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Oli static
-    //
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
@@ -94,6 +103,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             // Tiedostoon tallennus
             //
+
+            // soita ääni jos vaihdettiin ääni
+            detectSound(preference.getKey(), stringValue, context);
+
             String PREF_FILE_NAME = "PrefFile";
             SharedPreferences sharedPref = preference.getContext().getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
             // tallenna muuttujat
@@ -103,6 +116,42 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             return true;
         }
     };
+
+    // soita ääni jos vaihdettiin ääni
+    public static void detectSound(String key, String value, Context context) {
+        // jos vaihdettiin ääni, toista ääni
+        correctSoundFile = -1;
+        timeOnEdit = System.currentTimeMillis();
+        if (key.equals("correct_sound_list")) {
+            if (Integer.parseInt(value) == 0)
+                correctSoundFile = -1;
+            if (Integer.parseInt(value) == 1)
+                correctSoundFile = R.raw.naksutin1;
+            if (Integer.parseInt(value) == 2)
+                correctSoundFile = R.raw.naksutin2;
+            if (Integer.parseInt(value) == 3)
+                correctSoundFile = R.raw.rapina;
+            if (Integer.parseInt(value) == 4)
+                correctSoundFile = R.raw.goodboy;
+            if (Integer.parseInt(value) == 5)
+                correctSoundFile = R.raw.goodgirl;
+            playSound();
+        }
+        //Toast.makeText(context, timeOnEdit - timeOnStart + "", Toast.LENGTH_SHORT).show();
+    }
+
+    private static void playSound() {
+        Handler touchHandler = new android.os.Handler();
+        touchHandler.postDelayed(new Runnable() {
+            public void run() {
+                if (correctSoundFile != -1 && (timeOnEdit - timeOnStart >= 100)) {
+                    //Toast.makeText(context, timeOnEdit - timeOnStart + "", Toast.LENGTH_SHORT).show();
+                    correctSound = MediaPlayer.create(context, correctSoundFile);
+                    correctSound.start();
+                }
+            }
+        }, 50);
+    }
 
     /**
      * Helper method to determine if the device has an extra-large screen. For
@@ -137,6 +186,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = SettingsActivity.this;
+        timeOnStart = System.currentTimeMillis();
+
+        // äänipainikkeet muuttavat mediaääniä
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
         setupActionBar();
     }
 
@@ -205,6 +260,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("cover_animation_time_list"));
             bindPreferenceSummaryToValue(findPreference("level_points_list"));
             bindPreferenceSummaryToValue(findPreference("correct_sound_list"));
+            bindPreferenceSummaryToValue(findPreference("touch_area_list"));
         }
 
         @Override

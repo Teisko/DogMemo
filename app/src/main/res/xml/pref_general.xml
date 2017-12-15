@@ -105,12 +105,23 @@
     <!-- Kannustinääni -->
     <ListPreference
         android:id="@+id/correct_sound_chooser"
-        android:defaultValue="2"
+        android:defaultValue="1"
         android:entries="@array/correct_sound_list_titles"
         android:entryValues="@array/correct_sound_list_values"
         android:key="correct_sound_list"
         android:negativeButtonText="@null"
         android:positiveButtonText="@null"
         android:title="@string/correct_sound_title" />
+
+    <!-- Kosketusalueen koko -->
+    <ListPreference
+        android:id="@+id/touch_area_chooser"
+        android:defaultValue="1"
+        android:entries="@array/touch_area_list_titles"
+        android:entryValues="@array/touch_area_list_values"
+        android:key="touch_area_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/touch_area_title" />
 
 </PreferenceScreen>

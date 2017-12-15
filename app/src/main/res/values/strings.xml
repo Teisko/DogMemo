@@ -167,6 +167,19 @@
         <item>5</item>
     </string-array>
 
+    <!-- Kosketusalueen koko -->
+    <string name="touch_area_title">Kosketusalueen koko verrattuna pallon kokoon </string>
+    <string-array name="touch_area_list_titles">
+        <item>1 x</item>
+        <item>1,5 x</item>
+        <item>2 x</item>
+    </string-array>
+    <string-array name="touch_area_list_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <!-- Valmiita esimerkkitekstejä -->
 
     <string name="app_name">DogMemo</string>
