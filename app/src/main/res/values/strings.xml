@@ -32,12 +32,16 @@
     <string-array name="gametime_list_titles">
         <item>30 s</item>
         <item>1 min</item>
+        <item>2 min</item>
+        <item>3 min</item>
         <item>5 min</item>
         <item>10 min</item>
     </string-array>
     <string-array name="gametime_list_values">
         <item>30</item>
         <item>60</item>
+        <item>120</item>
+        <item>180</item>
         <item>300</item>
         <item>600</item>
     </string-array>
@@ -168,7 +172,7 @@
     </string-array>
 
     <!-- Kosketusalueen koko -->
-    <string name="touch_area_title">Kosketusalueen koko verrattuna pallon kokoon </string>
+    <string name="touch_area_title">Kosketusalueen koko verrattuna pallon kokoon</string>
     <string-array name="touch_area_list_titles">
         <item>1 x</item>
         <item>1,5 x</item>
@@ -178,6 +182,58 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
+    </string-array>
+
+    <!-- Pallon koko -->
+    <string name="ball_size_title">Pallon koko</string>
+    <string-array name="ball_size_list_titles">
+        <item>150</item>
+        <item>300</item>
+        <item>400</item>
+    </string-array>
+    <string-array name="ball_size_list_values">
+        <item>150</item>
+        <item>300</item>
+        <item>400</item>
+    </string-array>
+
+    <!-- Pienennä pallon kokoa -->
+    <string name="reduce_size_title">Pienennä pallon kokoa 1. tason jälkeen?</string>
+    <string-array name="reduce_size_list_titles">
+        <item>Pienennä</item>
+        <item>Älä pienennä</item>
+    </string-array>
+    <string-array name="reduce_size_list_values">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+    <!-- Pallon ilmestymisääni -->
+    <string name="ball_sound_title">Pallon ilmestymisääni</string>
+    <string-array name="ball_sound_list_titles">
+        <item>ei ääntä</item>
+        <item>ping</item>
+        <item>piip 1</item>
+        <item>piip 2</item>
+        <item>piip 3</item>
+    </string-array>
+    <string-array name="ball_sound_list_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!-- Musiikki -->
+    <string name="music_title">Musiikki päällä?</string>
+    <string-array name="music_list_titles">
+        <item>Päällä</item>
+        <item>Pois päältä</item>
+    </string-array>
+    <string-array name="music_list_values">
+        <item>1</item>
+        <item>0</item>
     </string-array>
 
     <!-- Valmiita esimerkkitekstejä -->

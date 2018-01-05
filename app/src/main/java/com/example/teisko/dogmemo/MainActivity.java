@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private ConstraintLayout mainActivity;
     private TextView countdown;                     // näyttää aikalaskurin
     private TextView ball;                          // pallo / peite jonka alla pallo
-    private TextView ballTouchArea;
+    private TextView ballTouchArea;                 // kosketusalue pallon ympärillä
     private TextView empty1;                        // empty1-3 tyhjä / peite jonka alla tyhjä
     private TextView empty2;
     private TextView empty3;
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     final String RED = "#ff0000";                   // Vakioita väreille
     final String BLUE = "#0000ff";
     final String BLACK = "#000000";
-    final String PREF_FILE_NAME = "PrefFile";       // Tiedosto, josta asetukset haetaan
+    final static String PREF_FILE_NAME = "PrefFile";       // Tiedosto, josta asetukset haetaan
 
     String ballColor = BLUE;                        // pallon väri, haetaan asetuksista
     String squareColor = BLACK;                     // peitteiden väri, haetaan asetuksista
@@ -64,10 +64,13 @@ public class MainActivity extends AppCompatActivity {
     int levelAllTouches = 0;                        // kaikki kosketukset kyseisen levelin aikana, lähtöarvo 1 koska jostain syystä 1. leveli loppuu muuten liian aikaisin
     int pointsForLevel = 5;                         // vaadittavat pisteet etenemiseen, haetaan asetuksista
     boolean newLevel = false;                       // true kun päästään uudelle levelille
-    int highestLevel = 0;
+    int highestLevel = 0;                           // korkein saavutettu taso
     // Ääni oikealle painallukselle
     int correctSoundFile = R.raw.naksutin1;         // ääniefekti oikean painalluksen jälkeen
     MediaPlayer correctSound;
+    // Ääni pallon ilmestymiselle
+    int ballSoundFile = R.raw.ping;
+    MediaPlayer ballSound;
     // Pelin kesto sekunteina
     int gameTime = 60;                              // pelin kesto sekunteina, haetaan asetuksista
     int ballHiddenTime = 2000;                      // pallon piilossaolon kesto oikean painalluksen jälkeen millisekunteina
@@ -75,9 +78,10 @@ public class MainActivity extends AppCompatActivity {
     int animationLength = 2000;                     // peiteanimaation kesto millisekunteina, haetaan asetuksista
     int width;                                      // näytön leveys pikseleinä
     int height;                                     // näytön korkeus pikseleinä
-    int ballDiameter = 300;
-    int currentDiameter = 300;
+    int ballDiameter = 300;                         // asetuksissa säädetty pallon koko
+    int currentDiameter = 300;                      // pallon tämänhetkinen koko
     double touchAreaCoef = 1.5;                     // kosketusalueen koko verrattuna pallon kokoon
+    boolean reduceSize;                             // pienennetäänkö pallon kokoa 1. tason jälkeen vai ei
 
     private int currentApiVersion;                  // android versio
 
@@ -187,21 +191,43 @@ public class MainActivity extends AppCompatActivity {
                 correctSoundFile = R.raw.goodboy;
             if (Integer.parseInt(sharedPref.getString("correct_sound_list", "")) == 5)
                 correctSoundFile = R.raw.goodgirl;
-        }
-        if (correctSoundFile != -1) {
-            correctSound = MediaPlayer.create(MainActivity.this, correctSoundFile);
+            if (correctSoundFile != -1)
+                correctSound = MediaPlayer.create(MainActivity.this, correctSoundFile);
         }
         // kosketusalueen koko verrattuna pallon kokoon
         if (!sharedPref.getString("touch_area_list", "").equals("")) {
-            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 0) {
+            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 0)
                 touchAreaCoef = 1;
-            }
-            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 1) {
+            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 1)
                 touchAreaCoef = 1.5;
-            }
-            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 2) {
+            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 2)
                 touchAreaCoef = 2;
-            }
+        }
+        // Pallon koko
+        if (!sharedPref.getString("ball_size_list", "").equals("")) {
+            ballDiameter = Integer.parseInt(sharedPref.getString("ball_size_list", ""));
+        }
+        // Pienennä pallon kokoa?
+        if (!sharedPref.getString("reduce_size_list", "").equals("")) {
+            if (Integer.parseInt(sharedPref.getString("reduce_size_list", "")) == 1)
+                reduceSize = true;
+            if (Integer.parseInt(sharedPref.getString("reduce_size_list", "")) == 0)
+                reduceSize = false;
+        }
+        // Pallon ilmestymisääni
+        if (!sharedPref.getString("ball_sound_list", "").equals("")) {
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 0)
+                ballSoundFile = -1;
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 1)
+                ballSoundFile = R.raw.ping;
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 2)
+                ballSoundFile = R.raw.piip1;
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 3)
+                ballSoundFile = R.raw.piip2;
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 4)
+                ballSoundFile = R.raw.piip3;
+            if (ballSoundFile != -1)
+                ballSound = MediaPlayer.create(MainActivity.this, ballSoundFile);
         }
 
         // asettaa haetut värit
@@ -214,48 +240,8 @@ public class MainActivity extends AppCompatActivity {
         width = size.x;
         height = size.y;
 
-        final View parent = (View) ball.getParent();
-        parent.post(new Runnable() {
-            public void run() {
-                final Rect rect = new Rect();
-                ball.getHitRect(rect);
-                rect.top -= 200;
-                rect.left -= 200;
-                rect.bottom += 200;
-                rect.right += 200;
-                parent.setTouchDelegate(new TouchDelegate(rect, ball));
-            }
-        });
-
-        // Asettaa pallon keskelle näyttöä pelin alkaessa näytön piirron jälkeen
-        ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                // Pallo keskelle
-                ball.setX(width/2 - ball.getWidth()/2);
-                ball.setY(height/2 - ball.getHeight()/2);
-
-                // oikea kosketusalue
-                DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
-                int px = Math.round((int)(currentDiameter*touchAreaCoef) * (dm.densityDpi / 160f));
-                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ballTouchArea.getLayoutParams();
-                params.width = px;
-                params.height = px;
-                ballTouchArea.setLayoutParams(params);
-
-                ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                        ballTouchArea.setX(ball.getX() + ball.getWidth()/2 - ballTouchArea.getWidth()/2);
-                        ballTouchArea.setY(ball.getY() + ball.getHeight()/2 - ballTouchArea.getHeight()/2);
-                    }
-                });
-
-                drawLevel();
-            }
-        });
+        // Aloita 1. taso
+        drawLevel();
 
         // Kaikkien kosketusten kuuntelija
         mainActivity.setOnTouchListener(new View.OnTouchListener() {
@@ -368,12 +354,6 @@ public class MainActivity extends AppCompatActivity {
 
         // katko näytön kosketuksen tunnistukseen kunnes pallosta tulee taas näkyvä
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        Handler touchHandler = new android.os.Handler();
-        touchHandler.postDelayed(new Runnable() {
-            public void run() {
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-            }
-        }, ballHiddenTime);
 
         // Viiveen ballHiddenTime jälkeen pallosta tulee taas näkyvä
         Handler handler = new Handler();
@@ -381,11 +361,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             // tämä suoritetaan viiveen ballHiddenTime jälkeen
             public void run() {
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 ball.setVisibility(View.VISIBLE);
 
-                // Aluksi pallo on keskellä 300dp kokoisena
+                // Pallon ilmestymisääni
+                if (ballSoundFile != -1) {
+                    ballSound.start();
+                }
+
+                // Aluksi pallo on keskellä ballDiameter kokoisena
                 if (level == 0) {
-                    // muuta pallon kokoa
+                    // muuta pallon, peitteiden ja tyhjien pallon paikkojen kokoa ballDiameter kokoiseksi
                     DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
                     currentDiameter = ballDiameter;
                     int px = Math.round(currentDiameter * (dm.densityDpi / 160f));
@@ -393,6 +379,60 @@ public class MainActivity extends AppCompatActivity {
                     params.width = px;
                     params.height = px;
                     ball.setLayoutParams(params);
+                    movingCover1.setLayoutParams(params);
+                    movingCover2.setLayoutParams(params);
+                    movingCover3.setLayoutParams(params);
+                    movingCover4.setLayoutParams(params);
+                    empty1.setLayoutParams(params);
+                    empty2.setLayoutParams(params);
+                    empty3.setLayoutParams(params);
+
+                    // Asettaa pallon keskelle näyttöä koon muuttamisen jälkeen
+                    ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            // Pallo keskelle
+                            ball.setX(width/2 - ball.getWidth()/2);
+                            ball.setY(height/2 - ball.getHeight()/2);
+                        }
+                    });
+
+                    // muuta kosketusalueen kokoa
+                    DisplayMetrics dm2 = Resources.getSystem().getDisplayMetrics();
+                    int px2 = Math.round((int)(currentDiameter*touchAreaCoef) * (dm2.densityDpi / 160f));
+                    ConstraintLayout.LayoutParams params2 = (ConstraintLayout.LayoutParams) ballTouchArea.getLayoutParams();
+                    params2.width = px2;
+                    params2.height = px2;
+                    ballTouchArea.setLayoutParams(params2);
+                    // aseta kosketusalue pallon kohdalle
+                    ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            ballTouchArea.setX(ball.getX() + ball.getWidth()/2 - ballTouchArea.getWidth()/2);
+                            ballTouchArea.setY(ball.getY() + ball.getHeight()/2 - ballTouchArea.getHeight()/2);
+                        }
+                    });
+                }
+
+                // pienennä pallon kokoa puolella jos asetus on päällä
+                if (level == 1 && reduceSize) {
+                    // muuta pallon kokoa
+                    DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
+                    currentDiameter = ballDiameter/2;
+                    int px = Math.round(currentDiameter * (dm.densityDpi / 160f));
+                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ball.getLayoutParams();
+                    params.width = px;
+                    params.height = px;
+                    ball.setLayoutParams(params);
+                    movingCover1.setLayoutParams(params);
+                    movingCover2.setLayoutParams(params);
+                    movingCover3.setLayoutParams(params);
+                    movingCover4.setLayoutParams(params);
+                    empty1.setLayoutParams(params);
+                    empty2.setLayoutParams(params);
+                    empty3.setLayoutParams(params);
 
                     // Asettaa pallon keskelle näyttöä koon muuttamisen jälkeen
                     ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -423,44 +463,11 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
 
-                // pienennä pallo 150dp kokoiseksi
-                if (level == 1) {
-                    // muuta pallon kokoa
-                    DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
-                    currentDiameter = ballDiameter/2;
-                    int px = Math.round(currentDiameter * (dm.densityDpi / 160f));
-                    ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ball.getLayoutParams();
-                    params.width = px;
-                    params.height = px;
-                    ball.setLayoutParams(params);
-
-                    // Asettaa pallon keskelle näyttöä koon muuttamisen jälkeen
-                    ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @Override
-                        public void onGlobalLayout() {
-                            ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            // Pallo keskelle
-                            ball.setX(width/2 - ball.getWidth()/2);
-                            ball.setY(height/2 - ball.getHeight()/2);
-                        }
-                    });
-
-                    // muuta kosketusalueen kokoa
-                    DisplayMetrics dm2 = Resources.getSystem().getDisplayMetrics();
-                    int px2 = Math.round((int)(currentDiameter*touchAreaCoef) * (dm2.densityDpi / 160f));
-                    ConstraintLayout.LayoutParams params2 = (ConstraintLayout.LayoutParams) ballTouchArea.getLayoutParams();
-                    params2.width = px2;
-                    params2.height = px2;
-                    ballTouchArea.setLayoutParams(params2);
-
-                    ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                        @Override
-                        public void onGlobalLayout() {
-                            ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                            ballTouchArea.setX(ball.getX() + ball.getWidth()/2 - ballTouchArea.getWidth()/2);
-                            ballTouchArea.setY(ball.getY() + ball.getHeight()/2 - ballTouchArea.getHeight()/2);
-                        }
-                    });
+                // jos kokoa ei haluta pienentää
+                else if (level == 1) {
+                    // Pallo keskelle
+                    ball.setX(width/2 - ball.getWidth()/2);
+                    ball.setY(height/2 - ball.getHeight()/2);
                 }
 
                 // pallo liikkuu 4 eri kohdan välillä
@@ -732,6 +739,12 @@ public class MainActivity extends AppCompatActivity {
                 recreate();
             }
         });
+    }
+
+    // androidin takaisin-näppäin palaa päävalikkoon
+    public void onBackPressed() {
+        Intent avaus = new Intent(MainActivity.this, MainMenu.class);
+        startActivity(avaus);
     }
 
     // Asettaa kuvioiden värit

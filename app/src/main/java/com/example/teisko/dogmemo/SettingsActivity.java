@@ -47,7 +47,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
     private static Context context;
     private static long timeOnStart;
-    private static int correctSoundFile;
+    private static int soundFile;
     private static MediaPlayer correctSound;
     private static long timeOnEdit;
 
@@ -105,7 +105,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             //
 
             // soita ääni jos vaihdettiin ääni
-            detectSound(preference.getKey(), stringValue, context);
+            detectSound(preference.getKey(), stringValue);
 
             String PREF_FILE_NAME = "PrefFile";
             SharedPreferences sharedPref = preference.getContext().getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
@@ -118,24 +118,48 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     };
 
     // soita ääni jos vaihdettiin ääni
-    public static void detectSound(String key, String value, Context context) {
+    public static void detectSound(String key, String value) {
         // jos vaihdettiin ääni, toista ääni
-        correctSoundFile = -1;
+        soundFile = -1;
         timeOnEdit = System.currentTimeMillis();
         if (key.equals("correct_sound_list")) {
             if (Integer.parseInt(value) == 0)
-                correctSoundFile = -1;
+                soundFile = -1;
             if (Integer.parseInt(value) == 1)
-                correctSoundFile = R.raw.naksutin1;
+                soundFile = R.raw.naksutin1;
             if (Integer.parseInt(value) == 2)
-                correctSoundFile = R.raw.naksutin2;
+                soundFile = R.raw.naksutin2;
             if (Integer.parseInt(value) == 3)
-                correctSoundFile = R.raw.rapina;
+                soundFile = R.raw.rapina;
             if (Integer.parseInt(value) == 4)
-                correctSoundFile = R.raw.goodboy;
+                soundFile = R.raw.goodboy;
             if (Integer.parseInt(value) == 5)
-                correctSoundFile = R.raw.goodgirl;
+                soundFile = R.raw.goodgirl;
             playSound();
+        }
+        if (key.equals("ball_sound_list")) {
+            if (Integer.parseInt(value) == 0)
+                soundFile = -1;
+            if (Integer.parseInt(value) == 1)
+                soundFile = R.raw.ping;
+            if (Integer.parseInt(value) == 2)
+                soundFile = R.raw.piip1;
+            if (Integer.parseInt(value) == 3)
+                soundFile = R.raw.piip2;
+            if (Integer.parseInt(value) == 4)
+                soundFile = R.raw.piip3;
+            playSound();
+        }
+        if (key.equals("music_list")) {
+            if (Integer.parseInt(value) == 0) {
+                if (MainMenu.musicPlayer.isPlaying()) {
+                    MainMenu.musicPlayer.pause();
+                }
+            }
+            if (Integer.parseInt(value) == 1) {
+                if (!MainMenu.musicPlayer.isPlaying())
+                    MainMenu.musicPlayer.start();
+            }
         }
         //Toast.makeText(context, timeOnEdit - timeOnStart + "", Toast.LENGTH_SHORT).show();
     }
@@ -144,9 +168,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         Handler touchHandler = new android.os.Handler();
         touchHandler.postDelayed(new Runnable() {
             public void run() {
-                if (correctSoundFile != -1 && (timeOnEdit - timeOnStart >= 100)) {
+                if (soundFile != -1 && (timeOnEdit - timeOnStart >= 100)) {
                     //Toast.makeText(context, timeOnEdit - timeOnStart + "", Toast.LENGTH_SHORT).show();
-                    correctSound = MediaPlayer.create(context, correctSoundFile);
+                    correctSound = MediaPlayer.create(context, soundFile);
                     correctSound.start();
                 }
             }
@@ -261,6 +285,10 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             bindPreferenceSummaryToValue(findPreference("level_points_list"));
             bindPreferenceSummaryToValue(findPreference("correct_sound_list"));
             bindPreferenceSummaryToValue(findPreference("touch_area_list"));
+            bindPreferenceSummaryToValue(findPreference("ball_size_list"));
+            bindPreferenceSummaryToValue(findPreference("reduce_size_list"));
+            bindPreferenceSummaryToValue(findPreference("ball_sound_list"));
+            bindPreferenceSummaryToValue(findPreference("music_list"));
         }
 
         @Override

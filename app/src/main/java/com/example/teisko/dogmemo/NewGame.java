@@ -59,6 +59,8 @@ public class NewGame extends AppCompatActivity {
         // äänipainikkeet muuttavat mediaääniä
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
+
+
         // Yhdistetään attribuutit niitä vastaaviin näyttöolioihin
         button_start = (Button)findViewById(R.id.button_start);
         button_addPlayer = (Button)findViewById(R.id.button_addPlayer);
@@ -84,6 +86,10 @@ public class NewGame extends AppCompatActivity {
                     avaus = new Intent(v.getContext(), MainActivity.class);
                 else
                     avaus = new Intent(v.getContext(), PracticeActivity.class);
+                // pysäytetään valikkomusiikki
+                if (MainMenu.musicPlayer.isPlaying()) {
+                    MainMenu.musicPlayer.pause();
+                }
                 startActivity(avaus);
             }
         });

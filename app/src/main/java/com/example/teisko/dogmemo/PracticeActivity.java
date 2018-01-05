@@ -36,14 +36,14 @@ public class PracticeActivity extends AppCompatActivity {
     private ConstraintLayout mainActivity;
     private TextView countdown;                     // näyttää aikalaskurin
     private TextView ball;                          // pallo / peite jonka alla pallo
-    private TextView ballTouchArea;
+    private TextView ballTouchArea;                 // kosketusalue pallon ympärillä
 
     final String RED = "#ff0000";                   // Vakioita väreille
     final String BLUE = "#0000ff";
     final String BLACK = "#000000";
     final String PREF_FILE_NAME = "PrefFile";       // Tiedosto, josta asetukset haetaan
 
-    String ballColor = BLUE;                         // pallon väri, haetaan asetuksista
+    String ballColor = BLUE;                        // pallon väri, haetaan asetuksista
     int ballBackground;                             // pallon Drawable kuvio
     // Oikeat painallukset & kaikki painallukset
     int correctTouches = 0;                         // oikeiden painallusten määrä
@@ -51,14 +51,18 @@ public class PracticeActivity extends AppCompatActivity {
     // Ääni oikealle painallukselle
     int correctSoundFile = R.raw.naksutin1;         // ääniefekti oikean painalluksen jälkeen
     MediaPlayer correctSound;
+    // Ääni pallon ilmestymiselle
+    int ballSoundFile = R.raw.ping;
+    MediaPlayer ballSound;
     // Pelin kesto sekunteina
     int gameTime = 60;                              // pelin kesto sekunteina, haetaan asetuksista
     int ballHiddenTime = 2000;                      // pallon piilossaolon kesto oikean painalluksen jälkeen millisekunteina
     int width;                                      // näytön leveys pikseleinä
     int height;                                     // näytön korkeus pikseleinä
-    int ballDiameter = 300;
-    int currentDiameter = 300;
+    int ballDiameter = 300;                         // asetuksissa säädetty pallon koko
+    int currentDiameter = 300;                      // pallon tämänhetkinen koko
     double touchAreaCoef = 1.5;                     // kosketusalueen koko verrattuna pallon kokoon
+    boolean reduceSize;                             // pienennetäänkö pallon kokoa 1. tason jälkeen vai ei
 
     private int currentApiVersion;                  // android versio
 
@@ -134,21 +138,43 @@ public class PracticeActivity extends AppCompatActivity {
                 correctSoundFile = R.raw.goodboy;
             if (Integer.parseInt(sharedPref.getString("correct_sound_list", "")) == 5)
                 correctSoundFile = R.raw.goodgirl;
-        }
-        if (correctSoundFile != -1) {
-            correctSound = MediaPlayer.create(PracticeActivity.this, correctSoundFile);
+            if (correctSoundFile != -1)
+                correctSound = MediaPlayer.create(PracticeActivity.this, correctSoundFile);
         }
         // kosketusalueen koko verrattuna pallon kokoon
         if (!sharedPref.getString("touch_area_list", "").equals("")) {
-            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 0) {
+            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 0)
                 touchAreaCoef = 1;
-            }
-            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 1) {
+            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 1)
                 touchAreaCoef = 1.5;
-            }
-            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 2) {
+            if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 2)
                 touchAreaCoef = 2;
-            }
+        }
+        // Pallon koko
+        if (!sharedPref.getString("ball_size_list", "").equals("")) {
+            ballDiameter = Integer.parseInt(sharedPref.getString("ball_size_list", ""));
+        }
+        // Pienennä pallon kokoa?
+        if (!sharedPref.getString("reduce_size_list", "").equals("")) {
+            if (Integer.parseInt(sharedPref.getString("reduce_size_list", "")) == 1)
+                reduceSize = true;
+            if (Integer.parseInt(sharedPref.getString("reduce_size_list", "")) == 0)
+                reduceSize = false;
+        }
+        // Pallon ilmestymisääni
+        if (!sharedPref.getString("ball_sound_list", "").equals("")) {
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 0)
+                ballSoundFile = -1;
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 1)
+                ballSoundFile = R.raw.ping;
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 2)
+                ballSoundFile = R.raw.piip1;
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 3)
+                ballSoundFile = R.raw.piip2;
+            if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 4)
+                ballSoundFile = R.raw.piip3;
+            if (ballSoundFile != -1)
+                ballSound = MediaPlayer.create(PracticeActivity.this, ballSoundFile);
         }
 
         // asettaa haetut värit
@@ -161,34 +187,8 @@ public class PracticeActivity extends AppCompatActivity {
         width = size.x;
         height = size.y;
 
-        // Asettaa pallon keskelle näyttöä pelin alkaessa näytön piirron jälkeen
-        ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                // Pallo keskelle
-                ball.setX(width/2 - ball.getWidth()/2);
-                ball.setY(height/2 - ball.getHeight()/2);
-                drawLevel();
-
-                // Oikea kosketusalue
-                DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
-                int px = Math.round((int)(currentDiameter*touchAreaCoef) * (dm.densityDpi / 160f));
-                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) ballTouchArea.getLayoutParams();
-                params.width = px;
-                params.height = px;
-                ballTouchArea.setLayoutParams(params);
-
-                ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @Override
-                    public void onGlobalLayout() {
-                        ball.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                        ballTouchArea.setX(ball.getX() + ball.getWidth()/2 - ballTouchArea.getWidth()/2);
-                        ballTouchArea.setY(ball.getY() + ball.getHeight()/2 - ballTouchArea.getHeight()/2);
-                    }
-                });
-            }
-        });
+        // Aloita 1. taso
+        drawLevel();
 
         // Kaikkien kosketusten kuuntelija
         mainActivity.setOnTouchListener(new View.OnTouchListener() {
@@ -196,6 +196,11 @@ public class PracticeActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     allTouches++;
+
+                    // harjoittelupelissä kannustusääni soi joka kosketuksesta
+                    if (correctSoundFile != -1) {
+                        correctSound.start();
+                    }
 
                     // tutkitaan osuiko kosketus oikeaan kohteeseen
                     ballTouchArea.setX(ball.getX() + ball.getWidth()/2 - ballTouchArea.getWidth()/2);
@@ -206,9 +211,6 @@ public class PracticeActivity extends AppCompatActivity {
                     // jos osui
                     if (ballRect.contains((int)event.getX(), (int)event.getY())) {
                         correctTouches++;
-                        if (correctSoundFile != -1) {
-                            correctSound.start();
-                        }
                         drawLevel();
                     }
                 }
@@ -269,12 +271,6 @@ public class PracticeActivity extends AppCompatActivity {
 
         // katko näytön kosketuksen tunnistukseen kunnes pallosta tulee taas näkyvä
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-        Handler touchHandler = new android.os.Handler();
-        touchHandler.postDelayed(new Runnable() {
-            public void run() {
-                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-            }
-        }, ballHiddenTime);
 
         // Viiveen ballHiddenTime jälkeen pallosta tulee taas näkyvä
         Handler handler = new Handler();
@@ -282,9 +278,15 @@ public class PracticeActivity extends AppCompatActivity {
             @Override
             // tämä suoritetaan viiveen ballHiddenTime jälkeen
             public void run() {
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 ball.setVisibility(View.VISIBLE);
 
-                // Aluksi pallo on keskellä 300dp kokoisena
+                // Pallon ilmestymisääni
+                if (ballSoundFile != -1) {
+                    ballSound.start();
+                }
+
+                // Aluksi pallo on keskellä ballDiameter kokoisena
                 if (correctTouches == 0) {
                     // muuta pallon kokoa
                     DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
@@ -313,7 +315,7 @@ public class PracticeActivity extends AppCompatActivity {
                     params2.width = px2;
                     params2.height = px2;
                     ballTouchArea.setLayoutParams(params2);
-
+                    // aseta kosketusalue pallon kohdalle
                     ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @Override
                         public void onGlobalLayout() {
@@ -324,8 +326,8 @@ public class PracticeActivity extends AppCompatActivity {
                     });
                 }
 
-                // pienennä pallo 150dp kokoiseksi
-                if (correctTouches == 1) {
+                // pienennä pallon kokoa puolella jos asetus on päällä
+                /*if (correctTouches == 1 && reduceSize) {
                     // muuta pallon kokoa
                     DisplayMetrics dm = Resources.getSystem().getDisplayMetrics();
                     currentDiameter = ballDiameter/2;
@@ -353,7 +355,7 @@ public class PracticeActivity extends AppCompatActivity {
                     params2.width = px2;
                     params2.height = px2;
                     ballTouchArea.setLayoutParams(params2);
-
+                    // aseta kosketusalue pallon kohdalle
                     ball.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @Override
                         public void onGlobalLayout() {
@@ -362,6 +364,13 @@ public class PracticeActivity extends AppCompatActivity {
                             ballTouchArea.setY(ball.getY() + ball.getHeight()/2 - ballTouchArea.getHeight()/2);
                         }
                     });
+                }*/
+
+                // jos kokoa ei haluta pienentää
+                else if (correctTouches == 1) {
+                    // Pallo keskelle
+                    ball.setX(width/2 - ball.getWidth()/2);
+                    ball.setY(height/2 - ball.getHeight()/2);
                 }
 
                 // pallo liikkuu 4 eri kohdan välillä
@@ -369,23 +378,23 @@ public class PracticeActivity extends AppCompatActivity {
                     double random = Math.floor(Math.random()*4);
                     if (random == 1) {
                         // alavasen kulma
-                        ball.setX(width/4 - ball.getWidth()/2);
-                        ball.setY(height*3/4 - ball.getHeight()/2);
+                        ball.setX(width/3 - ball.getWidth()/2);
+                        ball.setY(height*2/3 - ball.getHeight()/2);
                     }
                     if (random == 2) {
                         // ylävasen kulma
-                        ball.setX(width/4 - ball.getWidth()/2);
-                        ball.setY(height/4 - ball.getHeight()/2);
+                        ball.setX(width/3 - ball.getWidth()/2);
+                        ball.setY(height/3 - ball.getHeight()/2);
                     }
                     if (random == 3) {
                         // yläoikea kulma
-                        ball.setX(width*3/4 - ball.getWidth()/2);
-                        ball.setY(height/4 - ball.getHeight()/2);
+                        ball.setX(width*2/3 - ball.getWidth()/2);
+                        ball.setY(height/3 - ball.getHeight()/2);
                     }
                     if (random == 4) {
                         // alaoikea kulma
-                        ball.setX(width*3/4 - ball.getWidth()/2);
-                        ball.setY(height*3/4 - ball.getHeight()/2);
+                        ball.setX(width*2/3 - ball.getWidth()/2);
+                        ball.setY(height*2/3 - ball.getHeight()/2);
                     }
                 }
 
@@ -410,8 +419,17 @@ public class PracticeActivity extends AppCompatActivity {
         if (prosentti >= 90) {
             oikeinTeksti.setText("Oikein: " + correctTouches + "/" + allTouches + ", " + (int)prosentti + "%\n" + "Hienosti sujuu! Suosittelemme siirtymään normaaliin peliin");
         }
-        else {
-            oikeinTeksti.setText("Oikein: " + correctTouches + "/" + allTouches + ", " + (int) prosentti + "%");
+        else if (prosentti >= 60) {
+            oikeinTeksti.setText("Oikein: " + correctTouches + "/" + allTouches + ", " + (int)prosentti + "%\n" + "Tosi hyvä, olette kohta valmiita oikeaan peliin!\n" +
+                                                                                                                  "Kannattaa silti jatkaa harjoittelua kunnes onnistumisprosentti on yli 90%");
+        }
+        else if (prosentti >= 30) {
+            oikeinTeksti.setText("Oikein: " + correctTouches + "/" + allTouches + ", " + (int)prosentti + "%\n" + "Pallohan alkaa löytyä jo paremmin! Harjoitelkaa silti vielä,\n" +
+                                                                                                                  "oikeaan peliin kannattaa siirtyä vasta kun onnistumisprosentti on yli 90%");
+        }
+        else if (prosentti >= 0) {
+            oikeinTeksti.setText("Oikein: " + correctTouches + "/" + allTouches + ", " + (int)prosentti + "%\n" + "Olette päässeet harjoittelun alkuun, hyvä! Jatkakaa samaan malliin,\n" +
+                                                                                                                  "suosittelemme oikeaa peliä vasta kun onnistumisprosentti on yli 90%");
         }
 
         // fade animaatio painikkeelle
@@ -446,6 +464,12 @@ public class PracticeActivity extends AppCompatActivity {
                 recreate();
             }
         });
+    }
+
+    // androidin takaisin-näppäin palaa päävalikkoon
+    public void onBackPressed() {
+        Intent avaus = new Intent(PracticeActivity.this, MainMenu.class);
+        startActivity(avaus);
     }
 
     // Asettaa kuvioiden värit

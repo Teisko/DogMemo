@@ -124,4 +124,48 @@
         android:positiveButtonText="@null"
         android:title="@string/touch_area_title" />
 
+    <!-- Pallon koko -->
+    <ListPreference
+        android:id="@+id/ball_size_chooser"
+        android:defaultValue="300"
+        android:entries="@array/ball_size_list_titles"
+        android:entryValues="@array/ball_size_list_values"
+        android:key="ball_size_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/ball_size_title" />
+
+    <!-- Pienennä pallon kokoa -->
+    <ListPreference
+        android:id="@+id/reduce_size_chooser"
+        android:defaultValue="1"
+        android:entries="@array/reduce_size_list_titles"
+        android:entryValues="@array/reduce_size_list_values"
+        android:key="reduce_size_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/reduce_size_title" />
+
+    <!-- Pallon ilmestymisääni -->
+    <ListPreference
+        android:id="@+id/ball_sound_chooser"
+        android:defaultValue="1"
+        android:entries="@array/ball_sound_list_titles"
+        android:entryValues="@array/ball_sound_list_values"
+        android:key="ball_sound_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/ball_sound_title" />
+
+    <!-- Musiikki päällä -->
+    <ListPreference
+        android:id="@+id/music_chooser"
+        android:defaultValue="1"
+        android:entries="@array/music_list_titles"
+        android:entryValues="@array/music_list_values"
+        android:key="music_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/music_title" />
+
 </PreferenceScreen>
