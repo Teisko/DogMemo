@@ -191,9 +191,9 @@ public class MainActivity extends AppCompatActivity {
                 correctSoundFile = R.raw.goodboy;
             if (Integer.parseInt(sharedPref.getString("correct_sound_list", "")) == 5)
                 correctSoundFile = R.raw.goodgirl;
-            if (correctSoundFile != -1)
-                correctSound = MediaPlayer.create(MainActivity.this, correctSoundFile);
         }
+        if (correctSoundFile != -1)
+            correctSound = MediaPlayer.create(MainActivity.this, correctSoundFile);
         // kosketusalueen koko verrattuna pallon kokoon
         if (!sharedPref.getString("touch_area_list", "").equals("")) {
             if (Double.parseDouble(sharedPref.getString("touch_area_list", "")) == 0)
@@ -226,9 +226,9 @@ public class MainActivity extends AppCompatActivity {
                 ballSoundFile = R.raw.piip2;
             if (Integer.parseInt(sharedPref.getString("ball_sound_list", "")) == 4)
                 ballSoundFile = R.raw.piip3;
-            if (ballSoundFile != -1)
-                ballSound = MediaPlayer.create(MainActivity.this, ballSoundFile);
         }
+        if (ballSoundFile != -1)
+            ballSound = MediaPlayer.create(MainActivity.this, ballSoundFile);
 
         // asettaa haetut värit
         setColors();
