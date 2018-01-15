@@ -23,7 +23,6 @@ import java.util.Date;
 public class NewGame extends AppCompatActivity {
 
     // Vakioita
-    public static final String TIEDNIMI = "profiles.txt";
     private static final String TAG = "NewGame";
 
     /* Attribuutteja
@@ -44,7 +43,7 @@ public class NewGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
 
-        File file = new File(getApplicationContext().getFilesDir(), NewGame.TIEDNIMI);
+        File file = new File(getApplicationContext().getFilesDir(), Player.TIEDNIMI);
 
         try {
             if(!file.exists()) {
@@ -82,8 +81,10 @@ public class NewGame extends AppCompatActivity {
             public void onClick(View v) {
                 int peli = radioGroup.getCheckedRadioButtonId();
                 Intent avaus = null;
-                if(peli == R.id.radio_normaali)
+                if(peli == R.id.radio_normaali) {
                     avaus = new Intent(v.getContext(), MainActivity.class);
+                    avaus.putExtra("Pelaaja", valittu);
+                }
                 else
                     avaus = new Intent(v.getContext(), PracticeActivity.class);
                 // pysäytetään valikkomusiikki
@@ -119,7 +120,7 @@ public class NewGame extends AppCompatActivity {
         String sisalto = "";
 
         try {
-            inputStream = openFileInput(TIEDNIMI);
+            inputStream = openFileInput(Player.TIEDNIMI);
             StringBuffer fileContent = new StringBuffer("");
             int n = -1;
 
@@ -137,7 +138,6 @@ public class NewGame extends AppCompatActivity {
 
         String rivit[];
         // Jaetaan sisältö taulukoihin, mutta tarkistetaan ensin että sisältö ei ole tyhjä
-        // tai muuten tapahtuu hirvittäviä asioita
         if(sisalto.length() > 0)
             rivit = sisalto.split("\n");
         else

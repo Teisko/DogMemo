@@ -18,15 +18,15 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".PracticeActivity" />
-        <activity android:name=".GameEndActivity"></activity>            
+        <activity android:name=".GameEndActivity" />
         <activity android:name=".NewGame" />
-        <activity android:name=".NewPlayer"></activity>
+        <activity android:name=".NewPlayer" />
+        <activity android:name=".Playerlist"></activity>
     </application>
 
 </manifest>

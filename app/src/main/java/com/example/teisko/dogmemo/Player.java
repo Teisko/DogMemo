@@ -1,21 +1,35 @@
 package com.example.teisko.dogmemo;
 
 
+import android.util.Log;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  * Created by Sampo on 2017-10-13.
  * Edited by Tuukka on 2017-11-06.
  */
 
-public class Player {
+public class Player implements Serializable{
+
+    // Vakioita
+    public static final String TIEDNIMI = "profiles.txt";
+    public static final String TAG = "Player";
+
+    // Attribuutteja
     private String dogName;
     private String ownerName;
     private String rotu;
     private Date syntymapaiva;
     private int pisteet;
+    private LinkedList<Integer> pisteHistoria; // Viimeisen kymmenen pelin pisteet
     private int korkeinTaso;
     private int sukupuoli; // 0 = narttu, 1 = uros
 
@@ -123,6 +137,33 @@ public class Player {
     {
         DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         return df.format(syntymapaiva);
+    }
+
+    /** Pistehistorian päivitysmetodi, poistaa kymmenennen tuloksen ja lisää uusimman */
+    public void paivitaHistoria(int uusinTulos)
+    {
+        if(pisteHistoria.size() > 9)
+            pisteHistoria.removeLast();
+        pisteHistoria.addFirst(new Integer(uusinTulos));
+    }
+
+    /** Palauttaa pistehistorian pisteiden keskiarvon muodossa double */
+    public double keskiarvo()
+    {
+        double keskiarvo = 0;
+        if(pisteHistoria.size() > 0) {
+            ListIterator<Integer> iteraattori = pisteHistoria.listIterator(0);
+            while (iteraattori.hasNext()) {
+                keskiarvo += (double)iteraattori.next();
+            }
+        }
+        keskiarvo = keskiarvo / (double)pisteHistoria.size();
+        return keskiarvo;
+    }
+
+    public String fileName()
+    {
+        return dogName + ".txt";
     }
 
     /** Perityt metodit */

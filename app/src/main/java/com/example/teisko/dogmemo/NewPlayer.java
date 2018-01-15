@@ -83,10 +83,13 @@ public class NewPlayer extends AppCompatActivity {
                     } else
                         sukupuoli = 1;
 
-                    // Lisätään tiedostoon tiedot uudesta pelaajasta
-                    File file = new File(getApplicationContext().getFilesDir(), NewGame.TIEDNIMI);
+                    // Lisätään profiilitiedostoon tiedot uudesta pelaajasta
+                    File file = new File(getApplicationContext().getFilesDir(), Player.TIEDNIMI);
 
                     Player uusi = new Player(kNimi, oNimi, rotu, syntyma, sukupuoli);
+
+                    // Luodaan pelaajan pisteitä varten tiedosto
+                    File pistetiedosto = new File(getApplicationContext().getFilesDir(), uusi.fileName());
 
                     try {
                         FileWriter fileWriter = new FileWriter(file, true);
@@ -96,6 +99,7 @@ public class NewPlayer extends AppCompatActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
                     Intent output = new Intent();
                     output.putExtra("Avain", 1);
                     setResult(RESULT_OK, output);
@@ -123,15 +127,20 @@ public class NewPlayer extends AppCompatActivity {
         }
         else
         {
-            boolean hasNonAlpha = false;
-            String osat[] = kNimi.split(" ");
-            for(int i = 0; i < osat.length; i++) {
-                hasNonAlpha = osat[i].matches("^.*[^a-zA-Z0-9 ].*$");
-            }
-            if(hasNonAlpha)
+            // Tarkistetaan löytyykö samannimistä pelaajaa
+            if(!(new File(getApplicationContext().getFilesDir(), kNimi + ".txt").isFile()))
             {
-                text = "Koiran nimi sisältää ei-aakkosanumeerisiä merkkejä";
+                boolean hasNonAlpha = false;
+                String osat[] = kNimi.split(" ");
+                for (int i = 0; i < osat.length; i++) {
+                    hasNonAlpha = osat[i].matches("^.*[^a-zA-Z0-9 ].*$");
+                    if (hasNonAlpha) {
+                        text = "Koiran nimi sisältää ei-aakkosanumeerisiä merkkejä";
+                    }
+                }
             }
+            else
+                text = "Samanniminen koira löytyy jo.";
         }
 
         String oNimi = edit_omistaja.getText().toString();
@@ -145,10 +154,10 @@ public class NewPlayer extends AppCompatActivity {
             String osat[] = oNimi.split(" ");
             for(int i = 0; i < osat.length; i++) {
                 hasNonAlpha = osat[i].matches("^.*[^a-zA-Z0-9 ].*$");
-            }
-            if(hasNonAlpha)
-            {
-                text = "Omistajan nimi sisältää ei-aakkosanumeerisiä merkkejä";
+                if(hasNonAlpha)
+                {
+                    text = "Omistajan nimi sisältää ei-aakkosanumeerisiä merkkejä";
+                }
             }
         }
 
@@ -163,10 +172,10 @@ public class NewPlayer extends AppCompatActivity {
             String osat[] = rotu.split(" ");
             for(int i = 0; i < osat.length; i++) {
                 hasNonAlpha = osat[i].matches("^.*[^a-zA-Z0-9 ].*$");
-            }
-            if(hasNonAlpha)
-            {
-                text = "Koiran rotu sisältää ei-aakkosanumeerisiä merkkejä";
+                if(hasNonAlpha)
+                {
+                    text = "Koiran rotu sisältää ei-aakkosanumeerisiä merkkejä";
+                }
             }
         }
 
