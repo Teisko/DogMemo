@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
     int currentDiameter = 300;                      // pallon tämänhetkinen koko
     double touchAreaCoef = 1.5;                     // kosketusalueen koko verrattuna pallon kokoon
     boolean reduceSize;                             // pienennetäänkö pallon kokoa 1. tason jälkeen vai ei
+
+    private int korkeinTaso = 0;                    // Korkein saavutettu taso
 
     private int currentApiVersion;                  // android versio
 
@@ -251,6 +254,9 @@ public class MainActivity extends AppCompatActivity {
                     allTouches++;
                     levelAllTouches++;
 
+                    if(korkeinTaso < level)
+                        korkeinTaso = level;
+
                     // tutkitaan osuiko kosketus oikeaan kohteeseen
                     ballTouchArea.setX(ball.getX() + ball.getWidth()/2 - ballTouchArea.getWidth()/2);
                     ballTouchArea.setY(ball.getY() + ball.getHeight()/2 - ballTouchArea.getHeight()/2);
@@ -261,6 +267,7 @@ public class MainActivity extends AppCompatActivity {
                     if (ballRect.contains((int)event.getX(), (int)event.getY())) {
                         correctTouches++;
                         levelCorrectTouches++;
+
                         if (correctSoundFile != -1) {
                             correctSound.start();
                         }
@@ -704,7 +711,7 @@ public class MainActivity extends AppCompatActivity {
         palaa.setEnabled(false);
 
         // näytetään tulokset
-        float prosentti = (float) correctTouches/allTouches*100;
+        final float prosentti = (float) correctTouches/allTouches*100;
         oikeinTeksti.setText("Oikein: " + correctTouches + "/" + allTouches + ", " + (int)prosentti + "%");
 
         // fade animaatio painikkeelle
@@ -727,8 +734,12 @@ public class MainActivity extends AppCompatActivity {
         palaa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Annetaan Intentin mukana dataa pelikerrasta
                 Intent avaus = new Intent(v.getContext(), MainMenu.class);
-                startActivity(avaus);
+                avaus.putExtra("korkeinTaso", korkeinTaso);
+                avaus.putExtra("pisteet", prosentti);
+                setResult(NewGame.PELIOHI, avaus);
+                finish();
             }
         });
 

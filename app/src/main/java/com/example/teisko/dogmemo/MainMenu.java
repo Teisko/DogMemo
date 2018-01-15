@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
+import java.util.Date;
+
 public class MainMenu extends AppCompatActivity {
 
     private final String TAG = "MainMenu";
@@ -63,8 +66,13 @@ public class MainMenu extends AppCompatActivity {
         });
 
         button_tilastot = (Button)findViewById(R.id.button_tilastot);
-        button_tilastot.setEnabled(false);
-
+        button_tilastot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent avaus = new Intent(MainMenu.this, Playerlist.class);
+                startActivity(avaus);
+            }
+        });
         button_copyright = (Button)findViewById(R.id.button_copyright);
         button_copyright.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +81,6 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(avaus);
             }
         });
-
     }
 
     public void playMusicFile() {

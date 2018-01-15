@@ -8,23 +8,34 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 
 public class NewGame extends AppCompatActivity {
 
     // Vakioita
-    public static final String TIEDNIMI = "profiles.txt";
     private static final String TAG = "NewGame";
+
+    // Request codes
+    public static final int PELAAJANLUONTI = 25;
+    public static final int PELI = 3758;
+
+    // Resultcodes
+    public static final int PELIOHI = 1;
+    public static final int PELAAJALUOTU = 2;
 
     /* Attribuutteja
      *
@@ -44,7 +55,7 @@ public class NewGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
 
-        File file = new File(getApplicationContext().getFilesDir(), NewGame.TIEDNIMI);
+        File file = new File(getApplicationContext().getFilesDir(), Player.TIEDNIMI);
 
         try {
             if(!file.exists()) {
@@ -63,6 +74,10 @@ public class NewGame extends AppCompatActivity {
 
         // Yhdistetään attribuutit niitä vastaaviin näyttöolioihin
         button_start = (Button)findViewById(R.id.button_start);
+
+        // Aloituspainike ei toimi ennenkuin ollaan valittu pelaajaprofiili
+        button_start.setEnabled(false);
+
         button_addPlayer = (Button)findViewById(R.id.button_addPlayer);
 
         radio_normaali = (RadioButton)findViewById(R.id.radio_normaali);
@@ -73,7 +88,7 @@ public class NewGame extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent avaus = new Intent(v.getContext(), NewPlayer.class);
-                startActivityForResult(avaus, 1);
+                startActivityForResult(avaus, PELAAJALUOTU);
             }
         });
 
@@ -82,15 +97,16 @@ public class NewGame extends AppCompatActivity {
             public void onClick(View v) {
                 int peli = radioGroup.getCheckedRadioButtonId();
                 Intent avaus = null;
-                if(peli == R.id.radio_normaali)
+                if(peli == R.id.radio_normaali) {
                     avaus = new Intent(v.getContext(), MainActivity.class);
+                }
                 else
                     avaus = new Intent(v.getContext(), PracticeActivity.class);
                 // pysäytetään valikkomusiikki
-                if (MainMenu.musicPlayer.isPlaying()) {
+                if (MainMenu.musicPlayer != null && MainMenu.musicPlayer.isPlaying()) {
                     MainMenu.musicPlayer.pause();
                 }
-                startActivity(avaus);
+                startActivityForResult(avaus, PELIOHI);
             }
         });
 
@@ -98,6 +114,16 @@ public class NewGame extends AppCompatActivity {
         luePelaajat();
         ListAdapter dogsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
         ListView dogList = (ListView)findViewById(R.id.dogList);
+        dogList.setAdapter(dogsAdapter);
+        dogList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                valittu = dogs[position];
+                button_start.setEnabled(true);
+            }
+        });
         dogList.setAdapter(dogsAdapter);
     }
 
@@ -119,7 +145,7 @@ public class NewGame extends AppCompatActivity {
         String sisalto = "";
 
         try {
-            inputStream = openFileInput(TIEDNIMI);
+            inputStream = openFileInput(Player.TIEDNIMI);
             StringBuffer fileContent = new StringBuffer("");
             int n = -1;
 
@@ -137,7 +163,6 @@ public class NewGame extends AppCompatActivity {
 
         String rivit[];
         // Jaetaan sisältö taulukoihin, mutta tarkistetaan ensin että sisältö ei ole tyhjä
-        // tai muuten tapahtuu hirvittäviä asioita
         if(sisalto.length() > 0)
             rivit = sisalto.split("\n");
         else
@@ -154,22 +179,59 @@ public class NewGame extends AppCompatActivity {
             int kuukausi = Integer.parseInt(ajat[1]);
             int paiva = Integer.parseInt(ajat[0]);
             Date syntyma = new Date(vuosi, kuukausi, paiva);
-            int pisteet = Integer.parseInt(tiedot[4]);
+            int pelatutPelit = Integer.parseInt(tiedot[4]);
             int korkeinTaso = Integer.parseInt(tiedot[5]);
             int sukupuoli = Integer.parseInt(tiedot[6]);
+            double keskiarvo = Double.parseDouble(tiedot[7]);
 
-
-            dogs[i] = new Player(tiedot[0], tiedot[1], tiedot[2], syntyma, pisteet, korkeinTaso, sukupuoli);
+            dogs[i] = new Player(tiedot[0], tiedot[1], tiedot[2], syntyma, pelatutPelit, korkeinTaso, sukupuoli, keskiarvo);
+            dogs[i].lueHistoria(getApplicationContext());
         }
         lueNimet();
+
     }
 
-    // Kun pelaajanluonti-ikkunasta poistutaan, luetaan pelaajalista uudelleen
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        luePelaajat();
-        ListView list = (ListView) findViewById(R.id.dogList);
-        ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
-        list.setAdapter(adapter);
+        // Kun pelaajanluonti-ikkunasta poistutaan, luetaan pelaajalista uudelleen
+        if(resultCode == PELAAJALUOTU) {
+            luePelaajat();
+            ListView list = (ListView) findViewById(R.id.dogList);
+            ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
+            list.setAdapter(adapter);
+        }
+        if(resultCode == PELIOHI)
+        {
+            final int level = (int)data.getIntExtra("korkeinTaso", 0);
+            final double pisteet = (double)data.getFloatExtra("Pelaaja", 0);
+            if (level > valittu.korkeinTaso())
+                valittu.korkeinTaso(level);
+
+            valittu.paivitaHistoria((int) pisteet);
+            valittu.pelatutPelit(valittu.pelatutPelit() + 1);
+
+            // Luodaan File-olio pistehistorian tallentamista varten
+            File pistetiedosto = new File(getApplicationContext().getFilesDir(), valittu.fileName());
+            valittu.tallennaHistoria(pistetiedosto);
+
+            // Tallennetaan profiilitiedostoon päivitetyt pisteet
+            tallennaPelaajat();
+        }
+    }
+
+    public void tallennaPelaajat()
+    {
+        File file = new File(getApplicationContext().getFilesDir(), Player.TIEDNIMI);
+
+        try {
+            FileWriter fileWriter = new FileWriter(file, false);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for(int i = 0;i < dogs.length;i++) {
+                bufferedWriter.write(dogs[i].toString() + "\n");
+            }
+            bufferedWriter.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

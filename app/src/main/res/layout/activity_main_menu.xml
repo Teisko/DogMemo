@@ -35,13 +35,15 @@
     <Button
         android:id="@+id/button_tilastot"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text="Tilastot"
-        app:layout_constraintBottom_toTopOf="@+id/button_copyright"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_asetukset" />
+        android:layout_height="wrap_content"
+        android:text="Pelaajalista"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_asetukset"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
 
     <TextView
         android:id="@+id/text_menu"
