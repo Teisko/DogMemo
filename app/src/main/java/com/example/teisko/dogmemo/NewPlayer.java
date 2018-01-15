@@ -101,8 +101,7 @@ public class NewPlayer extends AppCompatActivity {
                     }
 
                     Intent output = new Intent();
-                    output.putExtra("Avain", 1);
-                    setResult(RESULT_OK, output);
+                    setResult(NewGame.PELAAJALUOTU, output);
                     finish();
                 }
             }
@@ -188,15 +187,9 @@ public class NewPlayer extends AppCompatActivity {
         {
             int vuosi = Integer.parseInt(ajat[2]);
 
-            if(vuosi < 1971 || vuosi > new Date().getYear()+1900) {
-                text = "Syötetty vuosi on virheellinen.";
-            }
-            else
+            if(!isDateValid(edit_syntyma.getText().toString()))
             {
-                if(!isDateValid(edit_syntyma.getText().toString()))
-                {
-                    text = "Syötetty päivämäärä on virheellinen. Vaaditaan muotoa dd-mm-yyyy.";
-                }
+                text = "Syötetty päivämäärä on virheellinen. Vaaditaan muotoa dd-mm-yyyy.";
             }
         }
 

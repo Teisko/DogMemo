@@ -64,7 +64,13 @@ public class MainMenu extends AppCompatActivity {
         });
 
         button_tilastot = (Button)findViewById(R.id.button_tilastot);
-        button_tilastot.setEnabled(false);
+        button_tilastot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent avaus = new Intent(MainMenu.this, Playerlist.class);
+                startActivity(avaus);
+            }
+        });
     }
 
     public void playMusicFile() {

@@ -152,12 +152,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
         if (key.equals("music_list")) {
             if (Integer.parseInt(value) == 0) {
-                if (MainMenu.musicPlayer.isPlaying()) {
+                if (MainMenu.musicPlayer != null && MainMenu.musicPlayer.isPlaying()) {
                     MainMenu.musicPlayer.pause();
                 }
             }
             if (Integer.parseInt(value) == 1) {
-                if (!MainMenu.musicPlayer.isPlaying())
+                if (MainMenu.musicPlayer != null && !MainMenu.musicPlayer.isPlaying())
                     MainMenu.musicPlayer.start();
             }
         }
