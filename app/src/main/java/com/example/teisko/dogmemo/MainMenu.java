@@ -23,6 +23,8 @@ public class MainMenu extends AppCompatActivity {
     Button button_uusi;
     Button button_asetukset;
     Button button_tilastot;
+    Button button_copyright;
+
     TextView menuText;
     static MediaPlayer musicPlayer;
     boolean playMusic = true;
@@ -68,6 +70,14 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent avaus = new Intent(MainMenu.this, Playerlist.class);
+                startActivity(avaus);
+            }
+        });
+        button_copyright = (Button)findViewById(R.id.button_copyright);
+        button_copyright.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent avaus = new Intent(v.getContext(), copyright.class);
                 startActivity(avaus);
             }
         });
