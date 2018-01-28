@@ -7,14 +7,9 @@ import android.media.MediaPlayer;
 import android.preference.PreferenceActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.FileInputStream;
-import java.util.Date;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -77,7 +72,7 @@ public class MainMenu extends AppCompatActivity {
         button_copyright.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent avaus = new Intent(v.getContext(), copyright.class);
+                Intent avaus = new Intent(v.getContext(), Copyright.class);
                 startActivity(avaus);
             }
         });

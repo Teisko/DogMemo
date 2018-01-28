@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
 
-public class copyright extends AppCompatActivity {
+public class Copyright extends AppCompatActivity {
 
 
     @Override

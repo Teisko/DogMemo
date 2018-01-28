@@ -37,6 +37,8 @@ public class PlayerInfo extends AppCompatActivity {
         oNimi.setText("Omistajan nimi: " + tutkittava.ownerName());
         rotu.setText("Rotu: " + tutkittava.rotu());
         ika.setText("Syntymäpäivä: " + tutkittava.syntymaTeksti());
+        System.out.println("Synttäri: " + tutkittava.syntymaTeksti());
+        System.out.println("ika: " + ika);
         if(tutkittava.sukupuoli() == 0)
             sukupuoli.setText("Sukupuoli: Narttu");
         else

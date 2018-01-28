@@ -203,7 +203,7 @@ public class NewGame extends AppCompatActivity {
         if(resultCode == PELIOHI)
         {
             final int level = (int)data.getIntExtra("korkeinTaso", 0);
-            final double pisteet = (double)data.getFloatExtra("Pelaaja", 0);
+            final double pisteet = (double)data.getFloatExtra("pisteet", 0);
             if (level > valittu.korkeinTaso())
                 valittu.korkeinTaso(level);
 

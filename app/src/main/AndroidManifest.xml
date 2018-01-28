@@ -27,6 +27,7 @@
         <activity android:name=".NewGame" />
         <activity android:name=".NewPlayer" />
         <activity android:name=".Playerlist" />
+        <activity android:name=".Copyright" />
         <activity android:name=".PlayerInfo"></activity>
     </application>
 

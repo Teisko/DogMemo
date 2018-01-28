@@ -210,7 +210,7 @@ public class Player implements Serializable{
     /** Laskee keskiarvon */
     private void laskeKeskiarvo()
     {
-        double keskiarvo = 0;
+        keskiarvo = 0;
         if(pisteHistoria.size() > 0) {
             ListIterator<Integer> iteraattori = pisteHistoria.listIterator(0);
             while (iteraattori.hasNext()) {

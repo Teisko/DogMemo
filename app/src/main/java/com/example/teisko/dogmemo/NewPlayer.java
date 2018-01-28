@@ -72,8 +72,11 @@ public class NewPlayer extends AppCompatActivity {
                     String rotu = edit_rotu.getText().toString();
                     String[] ajat = edit_syntyma.getText().toString().split("-");
                     int vuosi = Integer.parseInt(ajat[2]);
+                    System.out.println("vuosi: " + vuosi);
                     int kuukausi = Integer.parseInt(ajat[1]);
+                    System.out.println("kuukausi: " + kuukausi);
                     int paiva = Integer.parseInt(ajat[0]);
+                    System.out.println("paiva: " + paiva);
                     Date syntyma = new Date(vuosi, kuukausi, paiva);
                     int sukupuoli = -1;
 
