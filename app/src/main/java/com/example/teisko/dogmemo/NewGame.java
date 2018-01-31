@@ -178,7 +178,7 @@ public class NewGame extends AppCompatActivity {
             int vuosi = Integer.parseInt(ajat[2]);
             int kuukausi = Integer.parseInt(ajat[1]);
             int paiva = Integer.parseInt(ajat[0]);
-            Date syntyma = new Date(vuosi, kuukausi, paiva);
+            Date syntyma = new Date(vuosi-1900, kuukausi-1, paiva);
             int pelatutPelit = Integer.parseInt(tiedot[4]);
             int korkeinTaso = Integer.parseInt(tiedot[5]);
             int sukupuoli = Integer.parseInt(tiedot[6]);

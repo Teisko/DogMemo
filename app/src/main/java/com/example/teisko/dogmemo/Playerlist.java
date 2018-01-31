@@ -64,7 +64,7 @@ public class Playerlist extends AppCompatActivity {
 
             //Lisätään apulistaan kaikki paitsi poistettu pelaaja
             for(int i = 0;i < dogs.length;i++) {
-                if(!dogs[i].dogName().equals(poistettu))
+                if(!dogs[i].dogName().equals(poistettu.dogName()))
                 {
                     apulista.push(dogs[i]);
                 }

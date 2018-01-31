@@ -56,7 +56,6 @@ public class PlayerInfo extends AppCompatActivity {
                     // Luodaan File-olio sitä vastaavan tiedoston poistamiseksi
                     File pistetiedosto = new File(getApplicationContext().getFilesDir(), tutkittava.fileName());
 
-                    pistetiedosto.delete();
                 }
                 catch(Exception e)
                 {

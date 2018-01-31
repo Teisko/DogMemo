@@ -99,6 +99,14 @@ public class NewPlayer extends AppCompatActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    try {
+                        FileWriter fileWriter = new FileWriter(pistetiedosto, true);
+                        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                        bufferedWriter.write("0\n");
+                        bufferedWriter.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                     Intent output = new Intent();
                     setResult(NewGame.PELAAJALUOTU, output);
