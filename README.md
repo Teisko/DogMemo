@@ -1,2 +1,2 @@
 # DogMemo
-Muistipelikoiralle
+Androidilla toimiva koirille tehty muistipeli.
